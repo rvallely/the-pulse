@@ -1,38 +1,136 @@
-.App {
+@font-face {
+  font-family: 'Body-Grotesque-Fit-Trial-Bold';
+  src:url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.woff') format('woff'),
+      url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.svg#Body-Grotesque-Fit-Trial-Bold') format('svg'),
+      url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.eot'),
+      url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
   text-align: center;
+  font-family: 'Body-Grotesque-Fit-Trial-Bold';
+  background-color: #EBEFF4;
+  font-size: 16px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mischka-bckgrnd {
+  background-color: #E8E2EB;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.aqua-haze-bckgrnd {
+  background-color: #EBEFF4;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page {
+  padding-top: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+}
+
+/* .align-central-x {
+  left: 25%;
+  -ms-transform: translateX(-25%);
+  transform: translateX(-25%); 
+  margin: 0;
+  position: absolute;
+} */
+
+/* .align-central-y {
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); 
+  margin: 0;
+  position: absolute;
+} */
+
+.centre-align-x-y-container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 100vh;
 }
 
-.App-link {
-  color: #61dafb;
+.auth-container {
+  background-color: #32323b;
+  box-shadow: 1px 1px 20px #171717;
+  width: 30%;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-size: 1.5rem;
+  text-align: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.primary-action-btn {
+  font-family: inherit;
+  background-color: #5168f4;
+  font-size: inherit;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  padding: 2%; 
+  border: none;
+  margin-top: 2%;
+}
+
+.primary-action-btn:hover {
+  background: #f4b651;
+}
+
+.white {
+  color: #FFFFFF;
+}
+
+.inherit-color {
+  color: inherit;
+}
+
+.content-container {
+  margin: auto;
+}
+
+.inline-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* border: solid purple; */
+}
+
+.one-of-two-inline-element {
+  width: calc(50%); 
+  box-sizing: border-box;
+  /* border: solid yellow; */
+}
+
+#auth-form-pulse-logo {
+  height: 30%;
+  width: 30%;
+}
+
+.auth-form-input {
+  font-family: inherit;
+  font-size: inherit;
+  width: 99%;
+  background-color: #1d1e22;
+  color: inherit;
+  margin-bottom: 2%;
+  padding: 10px 0;
+  text-indent: 15px;
+  border-radius: 5px;
+  border: 1px solid #444;
+}
+
+.error {
+  color: red;
 }
