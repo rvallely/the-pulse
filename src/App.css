@@ -63,13 +63,17 @@ body {
 }
 
 .auth-container {
-  background-color: #32323b;
-  box-shadow: 1px 1px 20px #171717;
-  width: 30%;
-  border-radius: 10px;
-  color: #FFFFFF;
+  width: 40%;
   font-size: 1.5rem;
   text-align: left;
+  max-height: 90%;
+}
+
+.auth-container-shape-color {
+  background-color: #32323b;
+  box-shadow: 1px 1px 20px #171717;
+  border-radius: 10px;
+  color: #FFFFFF;
 }
 
 .primary-action-btn {
@@ -113,7 +117,7 @@ body {
   /* border: solid yellow; */
 }
 
-#auth-form-pulse-logo {
+.small-auth-icon {
   height: 30%;
   width: 30%;
 }
@@ -133,4 +137,50 @@ body {
 
 .error {
   color: red;
+}
+
+.avatar-container {
+  width: 60%; 
+  max-width: 800px; 
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 25%; 
+  padding: 10px; 
+}
+
+.column img {
+  width: 100%; 
+  height: auto;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 100; 
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.text-align-centre {
+  text-align: center;
 }

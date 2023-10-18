@@ -32,12 +32,12 @@ function Login () {
     return (
         <div className='mischka-bckgrnd page fixed'>
             <div className='centre-align-x-y-container'>
-                <div className='auth-container'>
+                <div className='auth-container auth-container-shape-color'>
                     <div style={{  margin: '7.72%' }}>
                         <div className='inline-container'>
                             <div className='one-of-two-inline-element'>
                                 <div>
-                                    <img id='auth-form-pulse-logo' src={thePulseLogoWhite} alt='the pulse logo'></img>
+                                    <img className='small-auth-icon' src={thePulseLogoWhite} alt='the pulse logo'></img>
                                 </div>
                             </div>
                             <div className='one-of-two-inline-element'>

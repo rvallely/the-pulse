@@ -10,3 +10,9 @@ export const getSingleUser = async (username, password) => {
     const response = await newsAPI.post('/users/login', { username, password });
     return response.data.user;
 }
+
+export const postUser = (user) => {
+    return newsAPI.post('/users', user).then((data) => {
+        return data.data.postedUser;
+    });
+}

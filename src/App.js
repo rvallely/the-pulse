@@ -2,13 +2,13 @@ import './App.css';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { UserContext } from './contexts/User';
-// import Articles from './components/Articles/Articles';
+import Articles from './components/Articles/Articles';
 // import ArticlesByUser from './components/Articles/ArticlesByUser';
 import Login from './components/General/Login';
 // import PostArticleForm from './components/Articles/PostArticleForm';
 // import PostCommentForm from './components/Articles/PostCommentForm';
 // import Redirect from './components/General/Redirect';
-// import Signup from './components/General/Signup';
+import Signup from './components/General/Signup';
 // import SingleArticle from './components/Articles/SingleArticle';
 // import User from './components/User/User';
 // import UserArticles from './components/User/UserArticles';
@@ -27,12 +27,11 @@ function App() {
   return (
     <BrowserRouter>
     <UserContext.Provider value={{loggedInUser, setLoggedInUser}}>
-      {/* <div className='App'> */}
         <Routes>
           <Route path='/' element={<Login />}></Route>
-          {/* <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/signup' element={<Signup />}></Route>
           <Route path='/articles' element={<Articles />}></Route>
-          <Route path='/articles/:article_id' element={<SingleArticle />}></Route>
+          {/* <Route path='/articles/:article_id' element={<SingleArticle />}></Route>
           <Route path='/user_feedback' element={<UserFeedback />}></Route>
           <Route path='/user' element={<User />}></Route>
           <Route path='/user/comments' element={<UserComments />}></Route>
@@ -42,7 +41,6 @@ function App() {
           <Route path='/user/post_article' element={<PostArticleForm />}></Route>
           <Route path='*' element={<Redirect />}></Route> */}
         </Routes>
-      {/* </div> */}
       </UserContext.Provider>
     </BrowserRouter>
   );
