@@ -12,8 +12,8 @@ function Nav({ selectedItem }) {
         });
     }, []);
     return(
-        <ul className='nav mischka-bckgrnd'>
-            <div style={{ display: 'flex', width: '70%', overflow: 'hidden'}}>
+        <ul className='nav alabaster-bckgrnd'>
+            <div style={{ display: 'flex', width: '70%', overflow: 'hidden', alignItems: 'center'}}>
                 <Link className={selectedItem === 'all topics' ? 'nav-link selected-nav-item' : 'nav-link'} to='/topics'>
                     <li>All Topics</li>
                 </Link>

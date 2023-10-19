@@ -1,6 +1,6 @@
 import Nav from "../General/Nav";
 
-function Topics(params) {
+function Topics() {
     return (
         <div>
             <Nav selectedItem={'all topics'} />

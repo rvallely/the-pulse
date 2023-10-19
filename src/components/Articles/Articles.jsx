@@ -1,12 +1,16 @@
-import UserDisplay from "../General/UserDisplay";
 import Header from "../General/Header";
 import Nav from "../General/Nav";
-import { useSearchParams, Link } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
-function Articles(params) {
+function Articles() {
     const [searchParams, setSearchParams] = useSearchParams();
     const searchTopic = searchParams.get('topic')
-    return <Nav selectedItem={searchTopic}/>
+    return (
+        <div>
+            <Header />
+            <Nav selectedItem={searchTopic}/>
+        </div>
+    )
 }
 
 export default Articles;

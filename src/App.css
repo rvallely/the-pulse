@@ -23,6 +23,10 @@ body {
   background-color: #EBEFF4;
 }
 
+.alabaster-bckgrnd {
+  background-color: #F7F7F7;
+}
+
 .page {
   padding-top: 0;
   top: 0;
@@ -198,7 +202,7 @@ body {
 }
 
 .nav-link {
-  padding: 2%;
+  padding: 1%;
 }
 
 .nav-link:hover {
@@ -212,5 +216,5 @@ body {
 
 .nav-icon {
   height:auto;
-  width: 80%;
+  width: 50%;
 }
