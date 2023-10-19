@@ -16,3 +16,9 @@ export const postUser = (user) => {
         return data.data.postedUser;
     });
 }
+
+export const getTopics = () => {
+    return newsAPI.get('/topics').then((data) => {
+        return data.data.topics;
+    });
+}

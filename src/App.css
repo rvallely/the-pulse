@@ -184,3 +184,33 @@ body {
 .text-align-centre {
   text-align: center;
 }
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+.nav li {
+  float: left;
+  color:#000000;
+}
+
+.nav-link {
+  padding: 2%;
+}
+
+.nav-link:hover {
+  cursor: pointer;
+  background-color: #F2CDFA;
+}
+
+.selected-nav-item {
+  background-color: #F2CDFA;
+}
+
+.nav-icon {
+  height:auto;
+  width: 80%;
+}

@@ -40,6 +40,9 @@ const Signup = () => {
             postUser({ email, username, avatarIcon, password}).then(() => {
                 alert('Sign up successful, please log in.');
                 navigate('/');
+            })
+            .catch((err) => {
+                setError(err.response.data.msg);
             });
         }
     }

@@ -9,6 +9,7 @@ import Login from './components/General/Login';
 // import PostCommentForm from './components/Articles/PostCommentForm';
 // import Redirect from './components/General/Redirect';
 import Signup from './components/General/Signup';
+import Topics from './components/Topics/Topics';
 // import SingleArticle from './components/Articles/SingleArticle';
 // import User from './components/User/User';
 // import UserArticles from './components/User/UserArticles';
@@ -31,6 +32,8 @@ function App() {
           <Route path='/' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/articles' element={<Articles />}></Route>
+          <Route path='/topics' element={<Topics />}></Route>
+        
           {/* <Route path='/articles/:article_id' element={<SingleArticle />}></Route>
           <Route path='/user_feedback' element={<UserFeedback />}></Route>
           <Route path='/user' element={<User />}></Route>
