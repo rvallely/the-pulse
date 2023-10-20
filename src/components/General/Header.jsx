@@ -17,8 +17,8 @@ function Header() {
             </div>
             <div id='date-user-link' style={{ display: 'grid', alignItems: 'center', width: '15%'}}>
                 <p style={{ margin: '1.5%'}}>{date}</p>   
-                <a href='/user' style={{ width: '30%', margin: 'auto' }}><img style={{ width: '100%' }} src={avatar_url} alt={avatar_url}></img></a>
-                <a href='/user' style={{ margin: 'auto', textDecoration: 'none' }}><p style={{ width: 'fit-content', margin: '1.5%', color: '#000000' }}>{username}</p>   </a>    
+                <a href={username === 'Log in' ? '/': '/user'} style={{ width: '30%', margin: 'auto' }}><img style={{ width: '100%' }} src={avatar_url} alt={avatar_url}></img></a>
+                <a href={username === 'Log in' ? '/': '/user'} style={{ margin: 'auto', textDecoration: 'none' }}><p style={{ width: 'fit-content', margin: '1.5%', color: '#000000' }}>{username}</p>   </a>    
             </ div>
         </ul>
     )
