@@ -218,3 +218,150 @@ body {
   height:auto;
   width: 50%;
 }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(118, 10px);
+  grid-template-rows: repeat(152, 10px);
+  max-width: 1180px;
+  max-height: 1520px;
+  margin: 0 auto;
+  margin-bottom: 2%;
+}
+
+.grid-item {
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  border: solid;
+  border-color: #004B84;
+  border-width: 1px;
+}
+ 
+.item1 {
+  background-color: #00C4C4;
+  grid-column: 1 / 28;
+  grid-row: 1 / 21;
+}
+
+.item2 {
+  background-color: #0464FF;
+  grid-column: 30 / 67;
+  grid-row: 1 / 21;
+}
+
+.item3 {
+  background-color: #F974A6;
+  grid-column: 69 / 119;
+  grid-row: 1 / 21;
+} 
+
+.item4 {
+  background-color: #1FC667;
+  grid-column: 1 / 28;
+  grid-row: 23 / 65;
+}
+
+.item5 {
+  background-color: #FA8700;
+  grid-column: 30 / 67;
+  grid-row: 23 / 43;
+}
+
+.item6 {
+  background-color: #F974A6;
+  grid-column: 30 / 67;
+  grid-row: 45 / 65;
+}
+
+.item7 {
+  background-color: #1FC667;
+  grid-column: 69 / 93;
+  grid-row: 23 / 65;
+}
+
+.item8 {
+  background-color: #0464FF;
+  grid-column: 95 / 119;
+  grid-row: 23 / 65;
+}
+
+.item9 {
+  background-color: #FA8700;
+  grid-column: 1 / 28;
+  grid-row: 67 / 87;
+}
+
+.item10 {
+  background-color: #0464FF;
+  grid-column: 30 / 67;
+  grid-row: 67 / 87;
+}
+
+.item11 {
+  background-color: #00C4C4;
+  grid-column: 69 / 119;
+  grid-row: 67 / 87;
+}
+
+.item12 {
+  background-color: #F974A6;
+  grid-column: 1 / 28;
+  grid-row: 89 / 131;
+}
+
+.item13 {
+  background-color: #1FC667;
+  grid-column: 30 / 67;
+  grid-row: 89 / 109;
+}
+
+.item14 {
+  background-color: #FA8700;
+  grid-column: 30 / 67;
+  grid-row: 111 / 131;
+}
+
+.item15 {
+  background-color: #0464FF;
+  grid-column: 69 / 93;
+  grid-row: 89 / 131;
+}
+
+.item16 {
+  background-color: #F974A6;
+  grid-column: 95 / 119;
+  grid-row: 89 / 131;
+}
+
+.item17 {
+  background-color: #00C4C4;
+  grid-column: 1 / 28;
+  grid-row: 133 / 153;
+}
+
+.item18 {
+  background-color: #1FC667;
+  grid-column: 30 / 67;
+  grid-row: 133 / 153;
+}
+
+.item19 {
+  background-color: #00C4C4;
+  grid-column: 69 / 119;
+  grid-row: 133 / 153;
+}
+
+.topic-grid-title-font {
+  font-size: 1.3rem;
+}
+.topic-grid-title-layout {
+  display: flex;
+  margin: auto;
+  margin-top: 5%;
+}
+
+.dis-flex-al-ctr {
+  display: flex;
+  align-items: center;
+}
