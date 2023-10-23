@@ -14,8 +14,8 @@ function Nav({ selectedItem }) {
     return(
         <ul className='nav alabaster-bckgrnd'>
             <div style={{ display: 'flex', width: '70%', overflow: 'hidden', alignItems: 'center'}}>
-                <Link className={selectedItem === 'all topics' ? 'nav-link selected-nav-item' : 'nav-link'} to='/topics'>
-                    <li>All Topics</li>
+                <Link className={selectedItem === null ? 'nav-link selected-nav-item' : 'nav-link'} to='/articles'>
+                    <li>All topics</li>
                 </Link>
                 {topics.slice(0, 5).map(({ name }) => {
                     return (
@@ -28,6 +28,9 @@ function Nav({ selectedItem }) {
                 <div className='nav-link' style={{ width: '10%',display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                     <img alt='filter-icon' className='nav-icon' src={filter}></img>
                 </div>
+                <Link className={selectedItem === 'all topics' ? 'nav-link selected-nav-item' : 'nav-link'} to='/topics'>
+                    <li>More topics here</li>
+                </Link>
             </div>
         </ul>
     )
