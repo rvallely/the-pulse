@@ -45,6 +45,7 @@ function AvatarGrid({changeModalVisibilty, setAvatarIcon}) {
                                     src={png}
                                     onClick={() => {
                                         document.getElementById(png).style.setProperty('border', 'solid green')
+                                        document.getElementById(png).style.setProperty('border-radius', '5px')
                                         avatarIcons.forEach(([key, value]) => {
                                             if (value !== png) {
                                                 document.getElementById(value).style.setProperty('border', 'none')
@@ -58,7 +59,7 @@ function AvatarGrid({changeModalVisibilty, setAvatarIcon}) {
                     })}
                 </div>
             </div>
-            <p className='text-align-centre' onClick={() => changeModalVisibilty()}>Confirm</p>
+            <p className='text-align-centre modal-button' style={{ width: '150px', margin: 'auto' }} onClick={() => changeModalVisibilty()}>Confirm</p>
         </div>
     </div>
   )

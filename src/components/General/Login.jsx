@@ -65,7 +65,9 @@ function Login () {
                                 onChange={(e) => setPassword(e.target.value)}
                                 className='auth-form-input'
                             ></input>
-                            <button className='primary-action-btn white'>
+                            <button
+                            className='action-btn auth-action-btn primary-bckgrnd white'
+                            style={{ marginTop: '2%'}}>
                                 Log in
                             </button>
                         </form>

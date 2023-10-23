@@ -85,7 +85,7 @@ const Signup = () => {
                             ></input>
                             <div className='inline-container'>
                                 <div className='one-of-two-inline-element'>
-                                    <p id="openModalButton" onClick={changeModalVisibilty}>Select Your Avatar</p>
+                                    <p className='modal-button' onClick={changeModalVisibilty}>Select Your Avatar</p>
                                 </div>
                                 <div className='one-of-two-inline-element'>
                                     <div>
@@ -114,7 +114,11 @@ const Signup = () => {
                                 className='auth-form-input'
                             ></input>
 
-                            <button className='primary-action-btn white'>Sign up</button>
+                            <button
+                            className='action-btn auth-action-btn primary-bckgrnd white'
+                            style={{ marginTop: '2%'}}>
+                                Sign up
+                            </button>
                         </form>                            
                     </div>
                 </div>
