@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTopics } from '../../utils/api';
-import filter from '../../assets/icons/filter.png';
+import sort from '../../assets/icons/sort.png';
+import SortBy from '../Articles/SortBy';
+import { changeModalVisibility } from './helpers/changeModalVisibility';
 
 function Nav({ selectedItem }) {
     const [topics, setTopics] = useState([]);
+    const [modalVisibility, setModalVisibility] = useState('closed');
 
     useEffect(() => {
         getTopics().then((topicsFromAPI) => {
@@ -25,9 +28,24 @@ function Nav({ selectedItem }) {
                     )
                     
                 })}
-                <div className='nav-link' style={{ width: '10%',display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-                    <img alt='filter-icon' className='nav-icon' src={filter}></img>
+                <div
+                className='nav-link'
+                style={{ width: '10%',display: 'flex', justifyContent: 'center', alignItems: 'center'}}
+                onClick={() => changeModalVisibility(
+                    {
+                        modalId: 'sort-by-modal',
+                        modalVisibility,
+                        setModalVisibility,
+                    }
+                    )}
+                >
+                    <img alt='sort-icon' className='nav-icon' src={sort}></img>
                 </div>
+                <SortBy
+                    changeModalVisibility={changeModalVisibility}
+                    modalVisibility={modalVisibility}
+                    setModalVisibility={setModalVisibility}
+                />
                 <Link className={selectedItem === 'all topics' ? 'nav-link selected-nav-item' : 'nav-link'} to='/topics'>
                     <li>More topics here</li>
                 </Link>

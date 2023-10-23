@@ -79,6 +79,10 @@ body {
   background-color: #5168f4;
 }
 
+.tuna-bckgrnd {
+  background-color: #32323b;
+}
+
 .votes-action-btn {
   width: 10%;
 }
@@ -88,7 +92,11 @@ body {
   background-color: #0464FF;
 }
 
-.auth-action-btn:hover {
+.tuna-bckgrnd:hover {
+  background: #f4b651;
+}
+
+.primary-bckgrnd:hover {
   background: #f4b651;
 }
 

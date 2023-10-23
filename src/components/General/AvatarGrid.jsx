@@ -26,9 +26,9 @@ const avatarIcons = [
     ['smileyMan', smileyMan],
     ['spiderman', spiderman],
 ]
-function AvatarGrid({changeModalVisibilty, setAvatarIcon}) {
+function AvatarGrid({changeModalVisibility, setAvatarIcon, modalVisibility, setModalVisibility}) {
     return ( 
-        <div id="avatarGridModal" class="modal">
+        <div id="avatar-grid-modal" class="modal">
             <div
             className="modal-content auth-container-shape-color"
             style={{ backgroundColor: '#32323b'}}
@@ -59,7 +59,19 @@ function AvatarGrid({changeModalVisibilty, setAvatarIcon}) {
                     })}
                 </div>
             </div>
-            <p className='text-align-centre modal-button' style={{ width: '150px', margin: 'auto' }} onClick={() => changeModalVisibilty()}>Confirm</p>
+            <p
+            className='text-align-centre modal-button'
+            style={{ width: '150px', margin: 'auto' }}
+            onClick={() => changeModalVisibility(
+                {
+                    modalId:'avatar-grid-modal',
+                    modalVisibility,
+                    setModalVisibility,
+                }
+            )}
+            >
+                Confirm
+            </p>
         </div>
     </div>
   )

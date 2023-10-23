@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { postUser } from '../../utils/api';
 import thePulseLogoWhite from '../../assets/the-pulse-logo-white.png';
 import AvatarGrid from './AvatarGrid';
+import { changeModalVisibility } from './helpers/changeModalVisibility';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -11,19 +12,8 @@ const Signup = () => {
     const [avatarIcon, setAvatarIcon] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState(null);
-    const [modalVisibilty, setModalVisibilty] = useState('closed');
- 
-    const changeModalVisibilty = () => {
-        const modal = document.getElementById("avatarGridModal");
-    
-        if (modalVisibilty === 'closed') {
-            modal.style.setProperty('display', "block")
-            setModalVisibilty('open')
-        } else {
-            modal.style.setProperty('display', "none")
-            setModalVisibilty('closed')
-        }
-    }
+    const [modalVisibility, setModalVisibility] = useState('closed');
+
    const navigate = useNavigate(); 
 
    const handleSubmit = (e) => {
@@ -85,7 +75,13 @@ const Signup = () => {
                             ></input>
                             <div className='inline-container'>
                                 <div className='one-of-two-inline-element'>
-                                    <p className='modal-button' onClick={changeModalVisibilty}>Select Your Avatar</p>
+                                    <p className='modal-button' onClick={() => changeModalVisibility(
+                                        {
+                                            modalId: 'avatar-grid-modal',
+                                            modalVisibility,
+                                            setModalVisibility,
+                                        }
+                                        )}>Select Your Avatar</p>
                                 </div>
                                 <div className='one-of-two-inline-element'>
                                     <div>
@@ -95,7 +91,12 @@ const Signup = () => {
                                     </div>
                                 </div>
                             </div>
-                            <AvatarGrid changeModalVisibilty={changeModalVisibilty} setAvatarIcon={setAvatarIcon}/>
+                            <AvatarGrid
+                                changeModalVisibility={changeModalVisibility}
+                                setAvatarIcon={setAvatarIcon}
+                                modalVisibility={modalVisibility}
+                                setModalVisibility={setModalVisibility}
+                            />
                             <input
                                 type='password'
                                 placeholder='Password'
