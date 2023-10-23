@@ -22,3 +22,16 @@ export const getTopics = () => {
         return data.data.topics;
     });
 }
+
+export const getArticles = (filterAndOrderParams, page) => {
+    let path = `/articles?page=${page}`;
+    Object.entries(filterAndOrderParams).forEach(([key, value]) => {
+        if (value) {
+            path += `&${key}=${value}`;
+        }
+    })
+    return newsAPI.get(path).then((data) => {
+        console.log(data.data)
+        return data.data;
+    });
+}

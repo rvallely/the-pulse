@@ -1,16 +1,14 @@
-@font-face {
-  font-family: 'Body-Grotesque-Fit-Trial-Bold';
-  src:url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.woff') format('woff'),
-      url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.svg#Body-Grotesque-Fit-Trial-Bold') format('svg'),
-      url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.eot'),
-      url('fonts/Body-Grotesque-Fit-Trial-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
-  font-weight: normal;
-  font-style: normal;
-}
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&family=Lato&family=Work+Sans&display=swap'); 'Lato', sans-serif;*/
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&family=Lato&family=Poppins&family=Work+Sans&display=swap'); 'Poppins', sans-serif */
+/* @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&family=Lato&family=Poppins&family=Raleway&family=Work+Sans&display=swap'); 'Raleway', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300&family=Lato&family=Montserrat:wght@400;500&family=Poppins&family=Raleway&family=Work+Sans&display=swap');
+
+/* font will be either monserrat of poppins*/
 
 body {
   text-align: center;
-  font-family: 'Body-Grotesque-Fit-Trial-Bold';
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
   background-color: #EBEFF4;
   font-size: 16px;
 }
@@ -43,22 +41,6 @@ body {
   position: fixed;
 }
 
-/* .align-central-x {
-  left: 25%;
-  -ms-transform: translateX(-25%);
-  transform: translateX(-25%); 
-  margin: 0;
-  position: absolute;
-} */
-
-/* .align-central-y {
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%); 
-  margin: 0;
-  position: absolute;
-} */
-
 .centre-align-x-y-container{
   display: flex;
   justify-content: center;
@@ -80,20 +62,38 @@ body {
   color: #FFFFFF;
 }
 
-.primary-action-btn {
+.action-btn {
   font-family: inherit;
-  background-color: #5168f4;
   font-size: inherit;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%;
   padding: 2%; 
   border: none;
-  margin-top: 2%;
 }
 
-.primary-action-btn:hover {
+.auth-action-btn {
+  width: 100%;
+}
+
+.primary-bckgrnd {
+  background-color: #5168f4;
+}
+
+.votes-action-btn {
+  width: 10%;
+}
+
+.page-action-btn {
+  width: 120px;
+  background-color: #0464FF;
+}
+
+.auth-action-btn:hover {
   background: #f4b651;
+}
+
+.page-action-btn:hover {
+  background: #1FC667;
 }
 
 .white {
@@ -112,13 +112,11 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  /* border: solid purple; */
 }
 
 .one-of-two-inline-element {
   width: calc(50%); 
   box-sizing: border-box;
-  /* border: solid yellow; */
 }
 
 .small-auth-icon {
@@ -148,6 +146,18 @@ body {
   max-width: 800px; 
   margin: 0 auto; 
   padding: 20px; 
+}
+
+.modal-button {
+  border-radius: 5px;
+  border: solid white;
+  border-width: 1px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.modal-button:hover {
+  background-color: #5168f4;
 }
 
 .row {
@@ -221,132 +231,188 @@ body {
 
 .grid-container {
   display: grid;
+  margin: 0 auto;
+}
+
+.topic-grid-container {
   grid-template-columns: repeat(118, 10px);
   grid-template-rows: repeat(152, 10px);
   max-width: 1180px;
   max-height: 1520px;
-  margin: 0 auto;
-  margin-bottom: 2%;
+}
+
+.article-grid-container {
+  grid-template-columns: repeat(118, 10px);
+  grid-template-rows: repeat(120, 10px);
+  grid-auto-rows: 10px;
+  max-width: 1180px;
+  max-height: 1200px;
+  margin-top: 0;
 }
 
 .grid-item {
-  color: #fff;
   text-align: center;
   border-radius: 15px;
+}
+
+.topic-grid-item {
   border: solid;
+  color: #fff;
   border-color: #004B84;
   border-width: 1px;
+  cursor: pointer;
 }
- 
-.item1 {
+
+.article-grid-item {
+  color: #000000;
+  text-align: left;
+}
+
+.article-item0 {
+  background-color: #FFFFFF;
+  grid-column: 1 / 59;
+  grid-row: 1 / 59;
+}
+
+.article-item1 {
+  background-color: #FFFFFF;
+  grid-column: 61 / 119;
+  grid-row: 1 / 29;
+}
+
+.article-item2 {
+  background-color: #FFFFFF;
+  grid-column: 61 / 119;
+  grid-row: 31 / 59;
+}
+
+.article-item3 {
+  background-color: #FFFFFF;
+  grid-column: 1 / 59;
+  grid-row: 61 / 89;
+}
+
+.article-item4 {
+  background-color: #FFFFFF;
+  grid-column: 1 / 59;
+  grid-row: 91 / 119;
+}
+
+.article-item5 {
+  background-color: #FFFFFF;
+  grid-column: 61 / 119;
+  grid-row: 61 / 119;
+}
+
+.topic-item1 {
   background-color: #00C4C4;
   grid-column: 1 / 28;
   grid-row: 1 / 21;
 }
 
-.item2 {
+.topic-item2 {
   background-color: #0464FF;
   grid-column: 30 / 67;
   grid-row: 1 / 21;
 }
 
-.item3 {
+.topic-item3 {
   background-color: #F974A6;
   grid-column: 69 / 119;
   grid-row: 1 / 21;
 } 
 
-.item4 {
+.topic-item4 {
   background-color: #1FC667;
   grid-column: 1 / 28;
   grid-row: 23 / 65;
 }
 
-.item5 {
+.topic-item5 {
   background-color: #FA8700;
   grid-column: 30 / 67;
   grid-row: 23 / 43;
 }
 
-.item6 {
+.topic-item6 {
   background-color: #F974A6;
   grid-column: 30 / 67;
   grid-row: 45 / 65;
 }
 
-.item7 {
+.topic-item7 {
   background-color: #1FC667;
   grid-column: 69 / 93;
   grid-row: 23 / 65;
 }
 
-.item8 {
+.topic-item8 {
   background-color: #0464FF;
   grid-column: 95 / 119;
   grid-row: 23 / 65;
 }
 
-.item9 {
+.topic-item9 {
   background-color: #FA8700;
   grid-column: 1 / 28;
   grid-row: 67 / 87;
 }
 
-.item10 {
+.topic-item10 {
   background-color: #0464FF;
   grid-column: 30 / 67;
   grid-row: 67 / 87;
 }
 
-.item11 {
+.topic-item11 {
   background-color: #00C4C4;
   grid-column: 69 / 119;
   grid-row: 67 / 87;
 }
 
-.item12 {
+.topic-item12 {
   background-color: #F974A6;
   grid-column: 1 / 28;
   grid-row: 89 / 131;
 }
 
-.item13 {
+.topic-item13 {
   background-color: #1FC667;
   grid-column: 30 / 67;
   grid-row: 89 / 109;
 }
 
-.item14 {
+.topic-item14 {
   background-color: #FA8700;
   grid-column: 30 / 67;
   grid-row: 111 / 131;
 }
 
-.item15 {
+.topic-item15 {
   background-color: #0464FF;
   grid-column: 69 / 93;
   grid-row: 89 / 131;
 }
 
-.item16 {
+.topic-item16 {
   background-color: #F974A6;
   grid-column: 95 / 119;
   grid-row: 89 / 131;
 }
 
-.item17 {
+.topic-item17 {
   background-color: #00C4C4;
   grid-column: 1 / 28;
   grid-row: 133 / 153;
 }
 
-.item18 {
+.topic-item18 {
   background-color: #1FC667;
   grid-column: 30 / 67;
   grid-row: 133 / 153;
 }
 
-.item19 {
+.topic-item19 {
   background-color: #00C4C4;
   grid-column: 69 / 119;
   grid-row: 133 / 153;
