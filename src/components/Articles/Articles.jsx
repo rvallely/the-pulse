@@ -1,18 +1,17 @@
 import Header from "../General/Header";
 import Nav from "../General/Nav";
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 import dateToUtcString from '../../utils/dateToUtcString';
 import { getArticles } from '../../utils/api';
-import votes from '../../assets/icons/votes.png';
 import NextPageButton from "./Buttons/NextPageButton";
 import PreviousPageButton from "./Buttons/PreviousPageButton";
+import ArticleVotes from "./Buttons/Votes/Votes";
 
 function Articles() {
     const [page, setPage] = useState(0);
     const [articles, setArticles] = useState({ articles: []});
 
-    const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -20,6 +19,12 @@ function Articles() {
     const author = searchParams.get('author')
     const sortBy = searchParams.get('sort-by')
     const order = searchParams.get('order')
+
+    let navigate = useNavigate();
+
+    const navigateToArticle = (articleId, variantColour) => {
+        navigate(`/articles/${articleId}`, { state: { variantColour } });
+    }
 
     useEffect(() => {
         getArticles({
@@ -29,12 +34,12 @@ function Articles() {
             order,
         },page).then((result) => {
             setArticles(result);
-            setIsLoading(false);
             setError(null);
         })
         .catch((err) => {
+            // TO DO: show error to user
+            console.log('ERROR:', err)
             setError(err);
-            setIsLoading(false);
         });
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, topic, author, order, sortBy ]);
@@ -42,7 +47,29 @@ function Articles() {
         <div>
             <Header />
             <Nav selectedItem={topic}/>
-            <h2>{topic === null ? 'All Articles': topic}</h2>
+            <h2>{
+                topic === null && author === null
+                ?
+                'All Articles'
+                : 
+                topic && author
+                    ?
+                    `${author} - ${topic}`
+                    :
+                    topic && !author
+                        ?
+                        topic
+                        :
+                        author
+                }
+                </h2>
+            {/**
+             * TODO: Explore {author} articles by topic
+             *       go get all topics author has articles on
+             *       display inline here as scrollable div
+             *       on click navigate to (/articles?author={author}&topic={topic})
+             *       already set up on BE
+             */}
             <p>Page {page + 1}</p>
             {articles.articles.length > 0
             ?
@@ -54,13 +81,16 @@ function Articles() {
                             {articles.articles.slice(group, group + 6).map((article, index) => {
                                 const colors = ['#0464FF', '#1FC667', '#00C4C4', '#FA8700', '#F974A6', '#8C52FF'];
                                 return (
-                                    <div className={`grid-item article-grid-item article-item${index}`} style={{ position : 'relative' }}>
+                                    <div
+                                        className={`grid-item article-grid-item article-item${index}`}
+                                        style={{ position : 'relative', cursor: 'pointer' }}
+                                        onClick={() => navigateToArticle(article.id, colors[index])}
+                                    >
                                     <div style={{
                                         marginTop: '0%',
                                         marginLeft: '17.4px',
                                         marginRight: '17.4px',
                                         marginBottom: '0%',
-                                        // border: 'solid red',
                                     }}>
                                         <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                                             <p style={{ color: colors[index] }}>{article.author}</p>
@@ -93,30 +123,13 @@ function Articles() {
                                         <div style={{
                                             position : 'absolute',
                                             bottom: '0',
-                                            // border: 'solid green',
                                             display: 'flex',
                                             justifyContent: 'space-between',
                                             width: '544px',
                                             height: '50px',
                                             marginBottom: '1%',
                                         }}>
-                                            <div
-                                            className="action-btn votes-action-btn white"
-                                            style={{
-                                                backgroundColor: colors[index],
-                                                height: '46px',
-                                                width: '70px',
-                                                display: 'flex',
-                                                // border: 'solid pink',
-                                                marginTop: '0',
-                                                
-                                                padding: '0px',
-                                                alignItems: 'center',
-                                                cursor: 'initial'
-                                            }}>
-                                            <p style={{ fontSize: '1.25rem', marginLeft: '6px', marginRight: '6px'}}>{article.votes}</p>
-                                            <img style={{height: '35px'}} src={votes} alt='votes thumbs up icon'></img>
-                                            </div>
+                                            <ArticleVotes type={'disabled'} articleId={ article.id } votes={article.votes } variantColour={colors[index]}/>
                                             <p style={{ color: colors[index] }}>{article.comment_count + ' comments'}</p>
                                         </div>
                                     </div>
@@ -138,7 +151,7 @@ function Articles() {
                             margin: 'auto',
                             width: '1180px',
                             padding: '0px',
-                            border: 'solid pink',
+                            // border: 'solid pink',
                             display: 'flex',
                             justifyContent: "right"
                             }}
@@ -154,7 +167,7 @@ function Articles() {
                             margin: 'auto',
                             width: '1180px',
                             padding: '0px',
-                            border: 'solid pink',
+                            // border: 'solid pink',
                             display: 'flex',
                             justifyContent: "left"
                             }}

@@ -11,27 +11,43 @@ export const getSingleUser = async (username, password) => {
     return response.data.user;
 }
 
-export const postUser = (user) => {
-    return newsAPI.post('/users', user).then((data) => {
-        return data.data.postedUser;
-    });
+export const postUser = async (user) => {
+    const data = await newsAPI.post('/users', user);
+    return data.data.postedUser;
 }
 
-export const getTopics = () => {
-    return newsAPI.get('/topics').then((data) => {
-        return data.data.topics;
-    });
+export const getTopics = async () => {
+    const data = await newsAPI.get('/topics');
+    return data.data.topics;
 }
 
-export const getArticles = (filterAndOrderParams, page) => {
+export const getArticles = async (filterAndOrderParams, page) => {
     let path = `/articles?page=${page}`;
     Object.entries(filterAndOrderParams).forEach(([key, value]) => {
         if (value) {
             path += `&${key}=${value}`;
         }
     })
-    return newsAPI.get(path).then((data) => {
-        console.log(data.data)
-        return data.data;
-    });
+    const data = await newsAPI.get(path);
+    return data.data;
+}
+
+export const getSingleArticle = async (id) => {
+    const data = await newsAPI.get(`/articles/${id}`);
+    return data.data.article;
+}
+
+export const patchArticle = async ({ id, body }) => {
+    const data = await newsAPI.patch(`/articles/${id}`, body);
+    return data.data.updatedArticle;
+}
+
+export const getComments = async (articleId, sortByParams) => {
+    const data = await newsAPI.get(`/articles/${articleId}/comments?sortBy=${sortByParams.sortBy}&order=${sortByParams.order}`);
+    return data.data.comments;
+}
+
+export const patchComment = async ({ id, body }) => {
+    const data = await newsAPI.patch(`/comments/${id}`, body);
+    return data.data.updatedComment;
 }

@@ -96,6 +96,10 @@ body {
   background: #f4b651;
 }
 
+.article-action-btn:hover {
+  background: #f4b651;
+}
+
 .primary-bckgrnd:hover {
   background: #f4b651;
 }
@@ -438,4 +442,15 @@ body {
 .dis-flex-al-ctr {
   display: flex;
   align-items: center;
+}
+
+.single-article-content-container {
+  max-width: 900px;
+  background-color: #FFFFFF;
+  text-align: left;
+  margin: auto;
+  border-radius: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-top: 30px;
 }

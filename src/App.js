@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useContext, useMemo, useEffect } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { UserContext } from './contexts/User';
 import Articles from './components/Articles/Articles';
@@ -10,31 +10,41 @@ import Login from './components/General/Login';
 // import Redirect from './components/General/Redirect';
 import Signup from './components/General/Signup';
 import Topics from './components/Topics/Topics';
-// import SingleArticle from './components/Articles/SingleArticle';
+import SingleArticle from './components/Articles/SingleArticle';
 // import User from './components/User/User';
 // import UserArticles from './components/User/UserArticles';
 // import UserComments from './components/User/UserComments';
 // import UserFeedback from './components/User/UserFeedback';
 
 function App() {
-
   const [loggedInUser, setLoggedInUser] = useState({
       username: 'Log in',
-      name: '',
       avatar_url:
         'https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png'
   });
 
+  useEffect(() => {
+    const loggedInUserLocalStorage = localStorage.getItem('loggedInUser');
+    if (loggedInUserLocalStorage) {
+      setLoggedInUser(JSON.parse(loggedInUserLocalStorage));
+    }
+  }, []);
+
+  const value = useMemo(
+    () => ({ loggedInUser, setLoggedInUser }), 
+    [loggedInUser]
+  );
+
   return (
     <BrowserRouter>
-    <UserContext.Provider value={{loggedInUser, setLoggedInUser}}>
+        <UserContext.Provider value={value}>
         <Routes>
-          <Route path='/' element={<Login />}></Route>
-          <Route path='/signup' element={<Signup />}></Route>
-          <Route path='/articles' element={<Articles />}></Route>
-          <Route path='/topics' element={<Topics />}></Route>
-        
-          {/* <Route path='/articles/:article_id' element={<SingleArticle />}></Route>
+            <Route path='/' element={<Login />}></Route>
+            <Route path='/signup' element={<Signup />}></Route>
+                <Route path='/articles' element={<Articles />}></Route>
+                <Route path='/topics' element={<Topics />}></Route>
+                <Route path='/articles/:articleId' element={<SingleArticle />}></Route>
+          {/* 
           <Route path='/user_feedback' element={<UserFeedback />}></Route>
           <Route path='/user' element={<User />}></Route>
           <Route path='/user/comments' element={<UserComments />}></Route>
@@ -43,8 +53,9 @@ function App() {
           <Route path='/articles/user/:username' element={<ArticlesByUser />}></Route>
           <Route path='/user/post_article' element={<PostArticleForm />}></Route>
           <Route path='*' element={<Redirect />}></Route> */}
-        </Routes>
-      </UserContext.Provider>
+          </Routes>
+        </UserContext.Provider>
+        
     </BrowserRouter>
   );
 }

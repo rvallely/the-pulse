@@ -41,7 +41,6 @@ function Topics() {
             <div className="grid-container topic-grid-container">
                 {/* eslint-disable-next-line array-callback-return */}
                 {topics.map(({ name }) => {
-                    console.log(name, '<<< topic')
                     switch (name) {
                         case 'Lifestyle and Daily Experiences':
                           return (
