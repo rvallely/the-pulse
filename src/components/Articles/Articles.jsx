@@ -1,11 +1,11 @@
-import Header from "../General/Header";
-import Nav from "../General/Nav";
+import Header from "../Header/Header";
+import Nav from "../Header/Nav";
 import React, { useEffect, useState } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import dateToUtcString from '../../utils/dateToUtcString';
 import { getArticles } from '../../utils/api';
-import NextPageButton from "./Buttons/NextPageButton";
-import PreviousPageButton from "./Buttons/PreviousPageButton";
+import NextPageButton from "./Buttons/PageTurners/NextPageButton";
+import PreviousPageButton from "./Buttons/PageTurners/PreviousPageButton";
 import ArticleVotes from "./Buttons/Votes/Votes";
 
 function Articles() {
@@ -70,10 +70,10 @@ function Articles() {
              *       on click navigate to (/articles?author={author}&topic={topic})
              *       already set up on BE
              */}
-            <p>Page {page + 1}</p>
             {articles.articles.length > 0
             ?
             <div>
+                <p>Page {page + 1}</p>
                 {
                 [0, 6, 12, 18, 24].slice(0, Math.ceil(articles.articles.length / 6)).map((group) => {
                     return (
@@ -190,7 +190,9 @@ function Articles() {
                 </div>
             </div>
             :
-            ''
+            <p>
+                No articles posted yet.
+            </p>
             }
         </div> 
     )

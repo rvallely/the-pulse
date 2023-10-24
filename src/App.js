@@ -1,14 +1,14 @@
 import './App.css';
-import { useState, useContext, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { UserContext } from './contexts/User';
 import Articles from './components/Articles/Articles';
 // import ArticlesByUser from './components/Articles/ArticlesByUser';
-import Login from './components/General/Login';
+import Login from './components/Auth/Login';
 // import PostArticleForm from './components/Articles/PostArticleForm';
 // import PostCommentForm from './components/Articles/PostCommentForm';
 // import Redirect from './components/General/Redirect';
-import Signup from './components/General/Signup';
+import Signup from './components/Auth/Signup';
 import Topics from './components/Topics/Topics';
 import SingleArticle from './components/Articles/SingleArticle';
 // import User from './components/User/User';

@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import Nav from "../General/Nav";
+import Nav from "../Header/Nav";
 import lifeStyleAndDailyExperience from '../../assets/topic_icons/lifestyleAndDailyExperience.png';
 import healthAndWellness from '../../assets/topic_icons/healthAndWellness.png';
 import financeAndMoney from '../../assets/topic_icons/financeAndMoney.png';
@@ -19,7 +19,7 @@ import foodAndCooking from '../../assets/topic_icons/foodAndCooking.png';
 import parentingAndFamily from '../../assets/topic_icons/parentingAndFamily.png';
 import educationAndLearning from '../../assets/topic_icons/educationAndLearning.png';
 import fictionAndCreativeWriting from '../../assets/topic_icons/fictionAndCreativeWriting.png';
-import Header from "../General/Header";
+import Header from "../Header/Header";
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { getTopics } from '../../utils/api';

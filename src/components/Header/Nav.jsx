@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getTopics } from '../../utils/api';
 import sort from '../../assets/icons/sort.png';
 import SortBy from '../Articles/SortBy';
-import { changeModalVisibility } from './helpers/changeModalVisibility';
+import { changeModalVisibility } from '../Articles/helpers/changeModalVisibility';
 
 function Nav({ selectedItem }) {
     const [topics, setTopics] = useState([]);

@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { postUser } from '../../utils/api';
 import thePulseLogoWhite from '../../assets/the-pulse-logo-white.png';
 import AvatarGrid from './AvatarGrid';
-import { changeModalVisibility } from './helpers/changeModalVisibility';
+import { changeModalVisibility } from '../Articles/helpers/changeModalVisibility';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
