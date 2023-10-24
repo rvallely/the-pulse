@@ -16,7 +16,8 @@ function Login () {
         e.preventDefault();
         setError(null);
         getSingleUser(username, password).then((user) => {
-            setLoggedInUser(user)
+            setLoggedInUser(user);
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
             navigate('/articles');
         })
         .catch((err) => {
