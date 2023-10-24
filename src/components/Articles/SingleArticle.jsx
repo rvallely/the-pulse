@@ -1,8 +1,8 @@
 import React, { useEffect, useState  }  from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { getComments, getSingleArticle } from '../../utils/api';
-import Header from '../General/Header';
-import Nav from '../General/Nav';
+import Header from '../Header/Header';
+import Nav from '../Header/Nav';
 import ArticleVotes from './Buttons/Votes/Votes';
 import dateToUtcString from '../../utils/dateToUtcString';
 import Comments from './Comments/Comments';
@@ -15,6 +15,7 @@ function SingleArticle() {
         sortBy: '',
         order: '',
     });
+    const [commentPosted, setCommentPosted] = useState(false);
 
     // TODO: set and test error handling
     const [error, setError] = useState(null);
@@ -41,12 +42,13 @@ function SingleArticle() {
                 .then((commentsFromApi) => {
                     setComments(commentsFromApi); 
             });
+            setCommentPosted(false);
         })
         .catch((err) => {
             console.log('ERROR: ', err)
             setError({ err });
         });
-    }, [articleId])
+    }, [articleId, commentPosted, commentSortByAndOrder.order, commentSortByAndOrder.sortBy])
 
     return (
         <div>
@@ -101,7 +103,12 @@ function SingleArticle() {
                     </p>
                 </div>
             </div>
-            <Comments comments={comments} variantColour={variantColour}/>
+            <Comments
+                comments={comments}
+                variantColour={variantColour}
+                articleId={articleId}
+                setCommentPosted={setCommentPosted}
+            />
         </div>
     )
 }

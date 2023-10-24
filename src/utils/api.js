@@ -51,3 +51,8 @@ export const patchComment = async ({ id, body }) => {
     const data = await newsAPI.patch(`/comments/${id}`, body);
     return data.data.updatedComment;
 }
+
+export const postComment = async (articleId, comment) => {
+    const data = await newsAPI.post(`/articles/${articleId}/comments`, comment);
+    return data.data.comment;
+}

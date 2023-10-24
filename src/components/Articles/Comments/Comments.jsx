@@ -1,6 +1,12 @@
+import { UserContext } from "../../../contexts/User";
+import PostComment from "./PostComment";
 import SingleComment from "./SingleComment";
+import { useContext, useState } from "react";
 
-function Comments({ comments, variantColour }) {
+function Comments({ comments, variantColour, articleId, setCommentPosted }) {
+    const [postCommentOpen, setPostCommentOpen] = useState(false);
+    const { loggedInUser: { username } } = useContext(UserContext);
+
     return (
         <div
         style={{
@@ -8,30 +14,47 @@ function Comments({ comments, variantColour }) {
             marginBottom: '30px',
         }}
         className="single-article-content-container">
-            {comments.length === 0
+            {
+            !postCommentOpen
             ?
-            <div style={{ paddingBottom: '20px' }}>
-                <p>Be the first one to comment</p>
+            <div
+            style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}
+            >
+                <button
+                    type='button'
+                    className="action-btn white"
+                    // TODO onHover change color to yellow same as other action btns
+                    style={{ backgroundColor: variantColour }}
+                    onClick={() => username === 'Log in' ? alert('Please log in to post a comment.'): setPostCommentOpen(true)}
+                >
+                    <strong>
+                        Post a comment
+                    </strong>
+                </button>
             </div>
             :
-            <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '30px' }}>
-                    <button
-                        type='button'
-                        className="action-btn white"
-                        // TODO onHover change color to yellow same as other action btns
-                        style={{ backgroundColor: variantColour }}
-                        onClick={() => 'TODO open post comment form'}
-                    >
-                        <strong>
-                            Post a comment
-                        </strong>
-                    </button>
-                </div>
-                {comments.map((comment, index) => {
-                    return <SingleComment comment={comment} variantColour={variantColour} lastComment={index + 1 === comments.length}/>
-                })}
-            </div>
+            <PostComment
+                articleId={articleId}
+                variantColour={variantColour}
+                setCommentPosted={setCommentPosted}
+                setPostCommentOpen={setPostCommentOpen}
+            />
+            }
+            {
+            comments.length === 0
+            ?
+            <p style={{ paddingBottom: '10px' }}>Be the first one to comment!</p>
+            :
+            comments.map((comment, index) => {
+                return (
+                    <SingleComment
+                        comment={comment}
+                        variantColour={variantColour}
+                        lastComment={index + 1 === comments.length}
+                    />
+                )
+            })
+   
         }
         </div>
     )
