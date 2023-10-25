@@ -44,7 +44,7 @@ function Topics() {
                     switch (name) {
                         case 'Lifestyle and Daily Experiences':
                           return (
-                            <div className="grid-item topic-grid-item topic-item1" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            <div className="grid-item topic-user-area-grid-item topic-item1" onClick={() => navigate(`/articles?topic=${name}`)}>
                                 <p className='topic-grid-title-font topic-grid-title-layout' style={{ width: '80%'}}>
                                     Lifestyle and Daily Experiences
                                 </p>
@@ -58,7 +58,7 @@ function Topics() {
                           )
                        
                         case 'Health and Wellness':
-                          return                 <div className="grid-item topic-grid-item topic-item2 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                          return                 <div className="grid-item topic-user-area-grid-item topic-item2 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                           <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                               <img
                               style={{ order: 1, maxWidth: '35%', height: 'auto', paddingRight: '3%' }}
@@ -73,7 +73,7 @@ function Topics() {
                           </div>
                       </div>
                         case 'Food and Cooking':
-                            return                 <div className="grid-item topic-grid-item topic-item3 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return                 <div className="grid-item topic-user-area-grid-item topic-item3 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                                 <img
                                 style={{ order: 1, maxWidth: '35%', height: 'auto', paddingRight: '3%' }}
@@ -88,7 +88,7 @@ function Topics() {
                             </div>
                         </div>
                         case 'Travel and Adventure':
-                          return <div className="grid-item topic-grid-item topic-item4" onClick={() => navigate(`/articles?topic=${name}`)}>
+                          return <div className="grid-item topic-user-area-grid-item topic-item4" onClick={() => navigate(`/articles?topic=${name}`)}>
                           <p
                           className='topic-grid-title-font topic-grid-title-layout'
                           style={{ width: '80%' }}>
@@ -102,7 +102,7 @@ function Topics() {
                           </div>
                       </div>
                         case 'Parenting and Family':
-                          return                 <div className="grid-item topic-grid-item topic-item5" onClick={() => navigate(`/articles?topic=${name}`)}>
+                          return                 <div className="grid-item topic-user-area-grid-item topic-item5" onClick={() => navigate(`/articles?topic=${name}`)}>
                           <p
                           className='topic-grid-title-font topic-grid-title-layout'
                           style={{ width: '50%' }}>
@@ -117,7 +117,7 @@ function Topics() {
                           </div>
                       </div>
                         case 'Technology and Gadgets':
-                            return <div className="grid-item topic-grid-item topic-item6 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item6 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                                 <img
                                 style={{ order: 1, maxWidth: '25%', height: 'auto', paddingRight: '3%' }}
@@ -132,7 +132,7 @@ function Topics() {
                             </div>
                         </div>
                         case 'Art and Creativity':
-                          return                 <div className="grid-item topic-grid-item topic-item7" onClick={() => navigate(`/articles?topic=${name}`)}>
+                          return                 <div className="grid-item topic-user-area-grid-item topic-item7" onClick={() => navigate(`/articles?topic=${name}`)}>
                           <p
                           className='topic-grid-title-font topic-grid-title-layout'
                           style={{ width: '80%' }}>
@@ -146,7 +146,7 @@ function Topics() {
                           </div>
                       </div>
                         case 'Relationships and Dating':
-                            return <div className="grid-item topic-grid-item topic-item8" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item8" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <p
                             className='topic-grid-title-font topic-grid-title-layout'
                             style={{ width: '80%' }}>
@@ -162,7 +162,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Inspiration and Motivation':
-                            return   <div className="grid-item topic-grid-item topic-item9" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return   <div className="grid-item topic-user-area-grid-item topic-item9" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <p
                             className='topic-grid-title-font topic-grid-title-layout'
                             style={{ width: '80%' }}>
@@ -177,7 +177,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Career and Professional Life':
-                            return <div className="grid-item topic-grid-item topic-item10 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item10 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                                 <img
                                 style={{ order: 1, maxWidth: '35%', height: 'auto', paddingRight: '3%' }}
@@ -192,7 +192,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Education and Learning':
-                            return   <div className="grid-item topic-grid-item topic-item11 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return   <div className="grid-item topic-user-area-grid-item topic-item11 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                                 <img
                                 style={{ order: 1, maxWidth: '30%', height: 'auto', paddingRight: '3%' }}
@@ -207,7 +207,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Hobbies and Interests':
-                            return  <div className="grid-item topic-grid-item topic-item12" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return  <div className="grid-item topic-user-area-grid-item topic-item12" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <p
                             className='topic-grid-title-font topic-grid-title-layout'
                             style={{ width: '80%' }}
@@ -223,7 +223,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Entertainment and Pop Culture':
-                            return <div className="grid-item topic-grid-item topic-item13 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item13 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <div className='dis-flex-al-ctr'>
                                 <img
                                 style={{ order: 1, maxWidth: '35%', height: 'auto', paddingLeft: '8%' }}
@@ -239,7 +239,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Sports and Fitness':
-                            return <div className="grid-item topic-grid-item topic-item14 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item14 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                                 <img
                                 style={{ order: 1, maxWidth: '40%', height: 'auto', paddingRight: '3%' }}
@@ -254,7 +254,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Home and DIY':
-                            return <div className="grid-item topic-grid-item topic-item15" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item15" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <p
                             className='topic-grid-title-font topic-grid-title-layout'
                             style={{ width: '50%' }}>
@@ -269,7 +269,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Politics and Religion':
-                            return <div className="grid-item topic-grid-item topic-item16" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item16" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <p
                             className='topic-grid-title-font topic-grid-title-layout'
                             style={{ width: '80%' }}>
@@ -284,7 +284,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Finance and Money':
-                            return <div className="grid-item topic-grid-item topic-item17" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item17" onClick={() => navigate(`/articles?topic=${name}`)}>
                             <p
                             className='topic-grid-title-font topic-grid-title-layout'
                             style={{ width: '70%' }}>
@@ -299,7 +299,7 @@ function Topics() {
                             </div>
                         </div>
                           case 'Community and Social Causes':
-                            return <div className="grid-item topic-grid-item topic-item18 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                            return <div className="grid-item topic-user-area-grid-item topic-item18 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                     <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                         <img
                         style={{ order: 1, maxWidth: '40%', height: 'auto', paddingRight: '3%' }}
@@ -314,7 +314,7 @@ function Topics() {
                     </div>
                 </div>
                 case 'Fiction and Creative Writing':
-                    return <div className="grid-item topic-grid-item topic-item19 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
+                    return <div className="grid-item topic-user-area-grid-item topic-item19 dis-flex-al-ctr" onClick={() => navigate(`/articles?topic=${name}`)}>
                     <div className='dis-flex-al-ctr' style={{ justifyContent: 'center' }}>
                         <img
                         style={{ order: 1, maxWidth: '40%', height: 'auto', paddingRight: '3%' }}

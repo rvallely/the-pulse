@@ -11,7 +11,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 import Topics from './components/Topics/Topics';
 import SingleArticle from './components/Articles/SingleArticle';
-// import User from './components/User/User';
+import User from './components/User/UserArea/UserArea';
 // import UserArticles from './components/User/UserArticles';
 // import UserComments from './components/User/UserComments';
 // import UserFeedback from './components/User/UserFeedback';
@@ -44,9 +44,10 @@ function App() {
                 <Route path='/articles' element={<Articles />}></Route>
                 <Route path='/topics' element={<Topics />}></Route>
                 <Route path='/articles/:articleId' element={<SingleArticle />}></Route>
+                <Route path='/user' element={<User />}></Route>
           {/* 
           <Route path='/user_feedback' element={<UserFeedback />}></Route>
-          <Route path='/user' element={<User />}></Route>
+          
           <Route path='/user/comments' element={<UserComments />}></Route>
           <Route path='/user/articles' element={<UserArticles />}></Route>
           <Route path='/articles/:article_id/post_comment' element={<PostCommentForm />}></Route>
