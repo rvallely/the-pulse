@@ -2,6 +2,7 @@ import { UserContext } from "../../../contexts/User";
 import PostComment from "./PostComment";
 import SingleComment from "./SingleComment";
 import { useContext, useState } from "react";
+import SortIcon from "../Buttons/Sort/SortIcon";
 
 function Comments({ comments, variantColour, articleId, setCommentPosted }) {
     const [postCommentOpen, setPostCommentOpen] = useState(false);
@@ -9,9 +10,11 @@ function Comments({ comments, variantColour, articleId, setCommentPosted }) {
 
     return (
         <div
+        id='comments-container'
         style={{
             paddingTop: '5px',
             marginBottom: '30px',
+            marginTop: '30px',
         }}
         className="single-article-content-container">
             {
@@ -31,6 +34,7 @@ function Comments({ comments, variantColour, articleId, setCommentPosted }) {
                         Post a comment
                     </strong>
                 </button>
+                <SortIcon type={'comments'} variantColour={variantColour}/>
             </div>
             :
             <PostComment

@@ -1,24 +1,29 @@
-import React, { useEffect, useState  }  from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import { getComments, getSingleArticle } from '../../utils/api';
+import React, { useEffect, useState, useContext  }  from 'react';
+import { useParams, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { getArticles, getComments } from '../../utils/api';
 import Header from '../Header/Header';
 import Nav from '../Header/Nav';
 import ArticleVotes from './Buttons/Votes/Votes';
 import dateToUtcString from '../../utils/dateToUtcString';
 import Comments from './Comments/Comments';
+import { UserContext } from '../../contexts/User';
+import editThinBlack from '../../assets/icons/editThinBlack.png';
+import deleteThinBlack from '../../assets/icons/deleteThinBlack.png';
+import { changeModalVisibility } from '../../helpers/changeModalVisibility';
 
 function SingleArticle() {
     const { articleId } = useParams();
     const [article, setArticle] = useState({});
     const [comments, setComments] = useState([]);
-    const [commentSortByAndOrder, setCommentSortByAndOrder] = useState({
-        sortBy: '',
-        order: '',
-    });
     const [commentPosted, setCommentPosted] = useState(false);
-
+    const { loggedInUser: { username } } = useContext(UserContext);
     // TODO: set and test error handling
     const [error, setError] = useState(null);
+
+        const [searchParams, setSearchParams] = useSearchParams();
+        const commentsSortBy = searchParams.get('sort-by')
+        const commentsOrder = searchParams.get('order')
+    
 
     const location = useLocation();
     const { variantColour } = location.state;
@@ -26,20 +31,20 @@ function SingleArticle() {
     let navigate = useNavigate();
 
     useEffect(() => {
-        getSingleArticle(articleId).then((articleFromApi) => {
+        getArticles({id: articleId}, 0).then((articleFromApi) => {
             // this preserves the line breaks correctly between paragraphs
-            const htmlFormattedText = articleFromApi.body.replace(/\n/g, '<br>');
+            const htmlFormattedText = articleFromApi.articles[0].body.replace(/\n/g, '<br>');
             document.getElementById('article-body').innerHTML = htmlFormattedText;
 
-            setArticle(articleFromApi);
+            setArticle(articleFromApi.articles[0]);
             
-            getComments(
+            getComments({
                 articleId,
-                {
-                    sortBy: commentSortByAndOrder.sortBy,
-                    order: commentSortByAndOrder.order,
-                })
-                .then((commentsFromApi) => {
+                filterSortByParams: {
+                    sortBy: commentsSortBy,
+                    order: commentsOrder,
+                },
+            }).then((commentsFromApi) => {
                     setComments(commentsFromApi); 
             });
             setCommentPosted(false);
@@ -48,7 +53,7 @@ function SingleArticle() {
             console.log('ERROR: ', err)
             setError({ err });
         });
-    }, [articleId, commentPosted, commentSortByAndOrder.order, commentSortByAndOrder.sortBy])
+    }, [articleId, commentPosted, commentsSortBy, commentsOrder])
 
     return (
         <div>
@@ -57,22 +62,44 @@ function SingleArticle() {
             <div style={{
                 paddingTop: '10px',
                 paddingBottom: '10px',
+                marginTop: '30px',
             }}
             className='single-article-content-container'>
                 <div style={{ display: 'flex', justifyContent: 'space-between'}}>
                         <p style={{ color: variantColour}}>
                             {dateToUtcString(article.created_at)}
                         </p>
-                        <p
-                            style={{
-                                color: variantColour,
-                                textDecoration: 'underline',
-                                cursor: 'pointer',
-                            }}
-                            onClick={() => navigate(`/articles?author=${article.author}`)}
-                        >
-                            {article.author}
-                        </p>
+                        {
+                            username === article.author
+                            ?
+                            <div >
+                                <img
+                                    className='rounded-border-on-hover'
+                                    src={editThinBlack} style={{ height: '50px', padding: '10px'}}
+                                    alt='edit icon'
+                                    //TODO: onclick go into edit article mode
+                                >
+                                </img>
+                                <img
+                                    className='rounded-border-on-hover'
+                                    src={deleteThinBlack} style={{ height: '50px', padding: '10px'}}
+                                    alt='delete icon'
+                                    //TODO: onclick go into delete article mode
+                                >
+                                </img>
+                            </div>
+                            :
+                            <p
+                                style={{
+                                    color: variantColour,
+                                    textDecoration: 'underline',
+                                    cursor: 'pointer',
+                                }}
+                                onClick={() => navigate(`/articles?author=${article.author}`)}
+                            >
+                                {article.author}
+                            </p>
+                        }
                 </div>
                 <h2 style={{ color: variantColour}}>
                     {article.title}
@@ -97,7 +124,9 @@ function SingleArticle() {
                             cursor: 'pointer',
                             textDecoration: 'underline'
                         }}
-                        // onClick={navigate('TODO/toggleCommentVisibility')}
+                        onClick={() => changeModalVisibility({
+                            modalId: 'comments-container',
+                        })}
                     >
                         {article.comment_count + ' comments'}
                     </p>

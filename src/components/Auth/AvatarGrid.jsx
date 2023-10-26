@@ -11,6 +11,7 @@ import redHairWoman from '../../assets/avatar_icons/red_hair_woman.png';
 import seriousMan from '../../assets/avatar_icons/serious_man.png';
 import smileyMan from '../../assets/avatar_icons/smiley_man.png';
 import spiderman from '../../assets/avatar_icons/spiderman.png';
+import { changeModalVisibility } from '../../helpers/changeModalVisibility';
 
 const avatarIcons = [
     ['beardedMan', beardedMan],
@@ -25,13 +26,19 @@ const avatarIcons = [
     ['seriousMan', seriousMan],
     ['smileyMan', smileyMan],
     ['spiderman', spiderman],
-]
-function AvatarGrid({changeModalVisibility, setAvatarIcon, modalVisibility, setModalVisibility}) {
+];
+
+function AvatarGrid({ setAvatarIcon }) {
     return ( 
         <div id="avatar-grid-modal" class="modal">
             <div
             className="modal-content auth-container-shape-color"
-            style={{ backgroundColor: '#32323b'}}
+            style={{
+                backgroundColor: '#32323b',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+            }}
             >
                 <div className="avatar-container">
                 <div className="row">
@@ -62,13 +69,9 @@ function AvatarGrid({changeModalVisibility, setAvatarIcon, modalVisibility, setM
             <p
             className='text-align-centre modal-button'
             style={{ width: '150px', margin: 'auto' }}
-            onClick={() => changeModalVisibility(
-                {
-                    modalId:'avatar-grid-modal',
-                    modalVisibility,
-                    setModalVisibility,
-                }
-            )}
+            onClick={() => changeModalVisibility({
+                modalId: 'avatar-grid-modal',
+            })}
             >
                 Confirm
             </p>
