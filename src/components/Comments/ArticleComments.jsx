@@ -1,10 +1,10 @@
-import { UserContext } from "../../../contexts/User";
+import { UserContext } from "../../contexts/User";
 import PostComment from "./PostComment";
 import SingleComment from "./SingleComment";
 import { useContext, useState } from "react";
-import SortIcon from "../Buttons/Sort/SortIcon";
+import SortIcon from "../Sort/SortIcon";
 
-function Comments({ comments, variantColour, articleId, setCommentPosted }) {
+function ArticleComments({ comments, variantColour, articleId, setCommentPosted }) {
     const [postCommentOpen, setPostCommentOpen] = useState(false);
     const { loggedInUser: { username } } = useContext(UserContext);
 
@@ -14,7 +14,6 @@ function Comments({ comments, variantColour, articleId, setCommentPosted }) {
         style={{
             paddingTop: '5px',
             marginBottom: '30px',
-            marginTop: '30px',
         }}
         className="single-article-content-container">
             {
@@ -55,6 +54,7 @@ function Comments({ comments, variantColour, articleId, setCommentPosted }) {
                         comment={comment}
                         variantColour={variantColour}
                         lastComment={index + 1 === comments.length}
+                        userComment={false}
                     />
                 )
             })
@@ -64,4 +64,4 @@ function Comments({ comments, variantColour, articleId, setCommentPosted }) {
     )
 }
 
-export default Comments;
+export default ArticleComments;

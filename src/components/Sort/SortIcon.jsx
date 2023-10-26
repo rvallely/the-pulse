@@ -1,6 +1,6 @@
-import { changeModalVisibility } from "../../../../helpers/changeModalVisibility";
+import { changeModalVisibility } from "../../helpers/changeModalVisibility";
 import SortBy from "./SortBy";
-import sort from '../../../../assets/icons/sort.png';
+import sort from '../../assets/icons/sort.png';
 
 function SortIcon({ type, variantColour }) {
     return (

@@ -37,13 +37,13 @@ export const patchArticle = async ({ id, body }) => {
     return data.data.updatedArticle;
 }
 
-export const getComments = async ({articleId, filterSortByParams }) => {
+export const getComments = async ({articleId, filterSortByParams }, page) => {
     console.log(articleId, filterSortByParams)
     let path = '';
     if (articleId) {
-        path = `/articles/${articleId}/comments?page=0`;
+        path = `/articles/${articleId}/comments?page=${page}`;
     } else {
-        path = '/comments?page=0';
+        path = `/comments?page=${page}`;
     }
     Object.entries(filterSortByParams).forEach(([key, value]) => {
         if (value) {
@@ -51,7 +51,7 @@ export const getComments = async ({articleId, filterSortByParams }) => {
         }
     })
     const data = await newsAPI.get(path);
-    return data.data.comments.comments;
+    return data.data.comments;
 }
 
 export const patchComment = async ({ id, body }) => {

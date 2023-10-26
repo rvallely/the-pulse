@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import Nav from '../Header/Nav';
 import ArticleVotes from './Buttons/Votes/Votes';
 import dateToUtcString from '../../utils/dateToUtcString';
-import Comments from './Comments/Comments';
+import ArticleComments from '../Comments/ArticleComments';
 import { UserContext } from '../../contexts/User';
 import editBlack from '../../assets/icons/editBlack.png';
 import deleteBlack from '../../assets/icons/deleteBlack.png';
@@ -16,6 +16,7 @@ function SingleArticle() {
     const [article, setArticle] = useState({});
     const [comments, setComments] = useState([]);
     const [commentPosted, setCommentPosted] = useState(false);
+    const [commentPage, setCommentPage] = useState(0);
     const { loggedInUser: { username } } = useContext(UserContext);
     // TODO: set and test error handling
     const [error, setError] = useState(null);
@@ -30,6 +31,7 @@ function SingleArticle() {
 
     let navigate = useNavigate();
 
+    // TODO: add next and previos btns same as Articles to handle retrieving next comments
     useEffect(() => {
         getArticles({id: articleId}, 0).then((articleFromApi) => {
             // this preserves the line breaks correctly between paragraphs
@@ -44,8 +46,10 @@ function SingleArticle() {
                     sortBy: commentsSortBy,
                     order: commentsOrder,
                 },
-            }).then((commentsFromApi) => {
-                    setComments(commentsFromApi); 
+            },
+            commentPage,
+            ).then((commentsFromApi) => {
+                    setComments(commentsFromApi.comments); 
             });
             setCommentPosted(false);
         })
@@ -53,7 +57,7 @@ function SingleArticle() {
             console.log('ERROR: ', err)
             setError({ err });
         });
-    }, [articleId, commentPosted, commentsSortBy, commentsOrder])
+    }, [articleId, commentPosted, commentsSortBy, commentsOrder, commentPage])
 
     return (
         <div>
@@ -63,6 +67,7 @@ function SingleArticle() {
                 paddingTop: '10px',
                 paddingBottom: '10px',
                 marginTop: '30px',
+                marginBottom: '30px',
             }}
             className='single-article-content-container'>
                 <div style={{ display: 'flex', justifyContent: 'space-between'}}>
@@ -132,7 +137,7 @@ function SingleArticle() {
                     </p>
                 </div>
             </div>
-            <Comments
+            <ArticleComments
                 comments={comments}
                 variantColour={variantColour}
                 articleId={articleId}

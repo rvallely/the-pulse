@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { changeModalVisibility } from '../../../../helpers/changeModalVisibility';
+import { changeModalVisibility } from '../../helpers/changeModalVisibility';
 
 function SortBy({ type, variantColour }) {
     const [sortBy, setSortBy] = useState('');
@@ -16,31 +16,29 @@ function SortBy({ type, variantColour }) {
             let topicPart = '';
             let authorPart = '';
 
-            if (type === 'articles') {
-                // preserve the author and topic if they exist
-                if (location.search.includes('topic') || location.search.includes('author')) {
-                    const queryParts = location.search.split('=').map((part) => {
-                        if (part.includes('?')) {
-                          return part.split('?')
-                        }
-                          if (part.includes('&')) {
-                          return part.split('&')
-                        }
-                        return part;
-                      }).flat()
-    
-                    const topicIndex = queryParts.indexOf('topic');
-                    if (queryParts.indexOf('topic') > -1) {
-                        topicPart = `topic=${queryParts[topicIndex + 1]}&`
+            // preserve the author and topic if they exist
+            if (location.search.includes('topic') || location.search.includes('author')) {
+                const queryParts = location.search.split('=').map((part) => {
+                    if (part.includes('?')) {
+                        return part.split('?')
                     }
-    
-                    const authorIndex = queryParts.indexOf('author');
-                    if (queryParts.indexOf('author') > -1) {
-                        authorPart = `author=${queryParts[authorIndex + 1]}&`
+                        if (part.includes('&')) {
+                        return part.split('&')
                     }
+                    return part;
+                    }).flat()
+
+                const topicIndex = queryParts.indexOf('topic');
+                if (queryParts.indexOf('topic') > -1) {
+                    topicPart = `topic=${queryParts[topicIndex + 1]}&`
+                }
+
+                const authorIndex = queryParts.indexOf('author');
+                if (queryParts.indexOf('author') > -1) {
+                    authorPart = `author=${queryParts[authorIndex + 1]}&`
                 }
             }
-
+            
             // and append the new sort by query part
             query += (topicPart + authorPart + sortBy);
             navigate(`${query}`, { state: { variantColour }}); 

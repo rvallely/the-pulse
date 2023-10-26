@@ -22,7 +22,7 @@ function UserArea() {
             <div className="grid-container user-area-grid-container">
                 <div
                     className="grid-item topic-user-area-grid-item user-area-grid-item1"
-                    onClick={() => navigate(`/comments?page=0`)}
+                    onClick={() => navigate(`/user/comments?page=0&author=${username}`)}
                 >
                     <p className='topic-grid-title-font text-align-centre' style={{ width: '100%'}}>
                         My Comments

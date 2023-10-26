@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { postComment } from "../../../utils/api";
-import { UserContext } from "../../../contexts/User";
+import { postComment } from "../../utils/api";
+import { UserContext } from "../../contexts/User";
 
 function PostComment({ articleId, variantColour, setCommentPosted, setPostCommentOpen }) {
     const [body, setBody] = useState('');
@@ -20,7 +20,7 @@ function PostComment({ articleId, variantColour, setCommentPosted, setPostCommen
         }}>
             <form>
                 <textarea
-                    className="post-article-comment-textarea"
+                    className="post-article-comment-form-element"
                     style={{
                         border: '2px solid #EBEFF4',
                         minHeight: '150px'

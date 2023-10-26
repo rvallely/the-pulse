@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getTopics } from '../../utils/api';
-import SortIcon from '../Articles/Buttons/Sort/SortIcon';
+import SortIcon from '../Sort/SortIcon';
 
 function Nav({ selectedItem }) {
     const [topics, setTopics] = useState([]);
@@ -19,9 +19,11 @@ function Nav({ selectedItem }) {
                 </Link>
                 {topics.slice(0, 5).map(({ name }) => {
                     return (
-                        <Link className={selectedItem === name ? 'nav-link small-icon selected-nav-item' : 'nav-link small-icon'} to={`/articles?topic=${name}`}>
-                            <li>{name}</li>
-                        </Link>
+                        <div key={name}>
+                            <Link className={selectedItem === name ? 'nav-link small-icon selected-nav-item' : 'nav-link small-icon'} to={`/articles?topic=${name}`}>
+                                <li>{name}</li>
+                            </Link>
+                        </div>
                     )
                     
                 })}
@@ -29,6 +31,7 @@ function Nav({ selectedItem }) {
                     /**
                      * If the user is on a specific article don't show sort icon, as this is irrelevant.
                      */
+                    // TODO: update this conditional so sort by appears on user articles
                     window.location.pathname.split('/').length > 2
                     ?
                     <></>
