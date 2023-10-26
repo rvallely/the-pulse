@@ -200,10 +200,6 @@ body {
 
 .modal-content {
   position: absolute;
-  /* display: block; */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: #FFFFFF;
   padding: 20px;
   border-radius: 5px;
@@ -488,5 +484,16 @@ body {
   border-radius: 5px;
   padding-left: 30px;
   padding-right: 30px;
-  margin-top: 30px;
+}
+
+.post-article-comment-form-element {
+  resize: none;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  margin-top: 10px;
 }

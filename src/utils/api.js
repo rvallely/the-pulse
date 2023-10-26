@@ -32,19 +32,26 @@ export const getArticles = async (filterAndOrderParams, page) => {
     return data.data;
 }
 
-export const getSingleArticle = async (id) => {
-    const data = await newsAPI.get(`/articles/${id}`);
-    return data.data.article;
-}
-
 export const patchArticle = async ({ id, body }) => {
     const data = await newsAPI.patch(`/articles/${id}`, body);
     return data.data.updatedArticle;
 }
 
-export const getComments = async (articleId, sortByParams) => {
-    const data = await newsAPI.get(`/articles/${articleId}/comments?sortBy=${sortByParams.sortBy}&order=${sortByParams.order}`);
-    return data.data.comments;
+export const getComments = async ({articleId, filterSortByParams }) => {
+    console.log(articleId, filterSortByParams)
+    let path = '';
+    if (articleId) {
+        path = `/articles/${articleId}/comments?page=0`;
+    } else {
+        path = '/comments?page=0';
+    }
+    Object.entries(filterSortByParams).forEach(([key, value]) => {
+        if (value) {
+            path += `&${key}=${value}`;
+        }
+    })
+    const data = await newsAPI.get(path);
+    return data.data.comments.comments;
 }
 
 export const patchComment = async ({ id, body }) => {
@@ -55,4 +62,9 @@ export const patchComment = async ({ id, body }) => {
 export const postComment = async (articleId, comment) => {
     const data = await newsAPI.post(`/articles/${articleId}/comments`, comment);
     return data.data.comment;
+}
+
+export const postArticle = async (article) => {
+    const data = await newsAPI.post('/articles', article);
+    return data.data.postedArticle;
 }

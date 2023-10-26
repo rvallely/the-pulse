@@ -12,6 +12,7 @@ import Signup from './components/Auth/Signup';
 import Topics from './components/Topics/Topics';
 import SingleArticle from './components/Articles/SingleArticle';
 import User from './components/User/UserArea/UserArea';
+import PostArticle from './components/User/UserArea/PostArticle';
 // import UserArticles from './components/User/UserArticles';
 // import UserComments from './components/User/UserComments';
 // import UserFeedback from './components/User/UserFeedback';
@@ -45,6 +46,7 @@ function App() {
                 <Route path='/topics' element={<Topics />}></Route>
                 <Route path='/articles/:articleId' element={<SingleArticle />}></Route>
                 <Route path='/user' element={<User />}></Route>
+                <Route path='/user/post-article' element={<PostArticle />}></Route>
           {/* 
           <Route path='/user_feedback' element={<UserFeedback />}></Route>
           

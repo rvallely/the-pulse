@@ -20,16 +20,9 @@ function PostComment({ articleId, variantColour, setCommentPosted, setPostCommen
         }}>
             <form>
                 <textarea
+                    className="post-article-comment-textarea"
                     style={{
-                        resize: 'none',
-                        padding: '10px',
-                        boxSizing: 'border-box',
                         border: '2px solid #EBEFF4',
-                        borderRadius: '5px',
-                        width: '100%',
-                        outline: 'none',
-                        fontFamily: 'inherit',
-                        fontSize: 'inherit',
                         minHeight: '150px'
                     }}
                     onChange={(e) => setBody(e.target.value)}
