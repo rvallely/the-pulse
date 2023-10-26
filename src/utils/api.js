@@ -38,7 +38,6 @@ export const patchArticle = async ({ id, body }) => {
 }
 
 export const getComments = async ({articleId, filterSortByParams }, page) => {
-    console.log(articleId, filterSortByParams)
     let path = '';
     if (articleId) {
         path = `/articles/${articleId}/comments?page=${page}`;

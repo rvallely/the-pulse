@@ -19,11 +19,9 @@ function Nav({ selectedItem }) {
                 </Link>
                 {topics.slice(0, 5).map(({ name }) => {
                     return (
-                        <div key={name}>
-                            <Link className={selectedItem === name ? 'nav-link small-icon selected-nav-item' : 'nav-link small-icon'} to={`/articles?topic=${name}`}>
-                                <li>{name}</li>
-                            </Link>
-                        </div>
+                        <Link key={name} className={selectedItem === name ? 'nav-link small-icon selected-nav-item' : 'nav-link small-icon'} to={`/articles?topic=${name}`}>
+                            <li>{name}</li>
+                        </Link>
                     )
                     
                 })}
@@ -36,9 +34,7 @@ function Nav({ selectedItem }) {
                     ?
                     <></>
                     :
-                    <div>
-                        <SortIcon type={'articles'}/>
-                    </div>
+                    <SortIcon type={'articles'}/>
                 }
                 <Link className={selectedItem === 'all topics' ? 'nav-link small-icon selected-nav-item' : 'nav-link small-icon'} to='/topics'>
                     <li>More topics here</li>

@@ -235,7 +235,7 @@ body {
 }
 
 .rounded-border-on-hover:hover {
-  border: solid #EBEFF4;
+  border: solid #777777;
   border-radius: 5px;
   border-width: 1px;
 }

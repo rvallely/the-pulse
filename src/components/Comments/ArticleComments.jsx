@@ -33,7 +33,12 @@ function ArticleComments({ comments, variantColour, articleId, setCommentPosted 
                         Post a comment
                     </strong>
                 </button>
+                {comments.length < 2
+                ?
+                <></>
+                :
                 <SortIcon type={'comments'} variantColour={variantColour}/>
+                }
             </div>
             :
             <PostComment

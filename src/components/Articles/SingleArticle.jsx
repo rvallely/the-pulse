@@ -7,9 +7,8 @@ import ArticleVotes from './Buttons/Votes/Votes';
 import dateToUtcString from '../../utils/dateToUtcString';
 import ArticleComments from '../Comments/ArticleComments';
 import { UserContext } from '../../contexts/User';
-import editBlack from '../../assets/icons/editBlack.png';
-import deleteBlack from '../../assets/icons/deleteBlack.png';
 import { changeModalVisibility } from '../../helpers/changeModalVisibility';
+import EditAndDelete from '../EditAndDelete/EditAndDelete';
 
 function SingleArticle() {
     const { articleId } = useParams();
@@ -77,22 +76,7 @@ function SingleArticle() {
                         {
                             username === article.author
                             ?
-                            <div >
-                                <img
-                                    className='rounded-border-on-hover'
-                                    src={editBlack} style={{ height: '50px', padding: '10px'}}
-                                    alt='edit icon'
-                                    //TODO: onclick go into edit article mode
-                                >
-                                </img>
-                                <img
-                                    className='rounded-border-on-hover'
-                                    src={deleteBlack} style={{ height: '50px', padding: '10px'}}
-                                    alt='delete icon'
-                                    //TODO: onclick go into delete article mode
-                                >
-                                </img>
-                            </div>
+                            < EditAndDelete />
                             :
                             <p
                                 style={{

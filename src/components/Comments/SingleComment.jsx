@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import CommentVotes from "../Articles/Buttons/Votes/CommentVotes";
 import { useEffect, useState } from "react";
 import { getArticles } from "../../utils/api";
+import EditAndDelete from "../EditAndDelete/EditAndDelete";
 
 function SingleComment({ comment, variantColour, lastComment, userComment }) {
     const [articleTitle, setArticleTitle] = useState('');
@@ -58,7 +59,15 @@ function SingleComment({ comment, variantColour, lastComment, userComment }) {
                     }
                 </div>
             <p>{comment.body}</p>
-            <CommentVotes type={'comment'} commentId={ comment.id } votes={comment.votes } variantColour={variantColour}/>
+            <div style={{ display: 'flex', justifyContent: 'space-between'}}>
+                <CommentVotes type={'comment'} commentId={ comment.id } votes={comment.votes } variantColour={variantColour}/>
+                {userComment
+                ?
+                < EditAndDelete />
+                :
+                <></>
+                }
+            </div>
         </div>
     )
 }

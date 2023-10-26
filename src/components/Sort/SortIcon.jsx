@@ -4,10 +4,11 @@ import sort from '../../assets/icons/sort.png';
 
 function SortIcon({ type, variantColour }) {
     return (
-        <div>
+        <div
+            className='small-icon rounded-border-on-hover'
+        >
             <div
                 id={`${type}-sort-by-icon`}
-                className={type === 'articles'? 'small-icon nav-link': 'small-icon rounded-border-on-hover'}
                 style={{ width: '60px',display: 'flex', justifyContent: 'center', alignItems: 'center'}}
                 onClick={() => changeModalVisibility({
                     modalId: `${type}-sort-by-modal`,
