@@ -497,3 +497,7 @@ body {
   font-size: inherit;
   margin-top: 10px;
 }
+
+.error-color {
+  color: #FF3131;
+}

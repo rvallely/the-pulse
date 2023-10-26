@@ -37,7 +37,7 @@ function SingleComment({ comment, variantColour, lastComment, userComment }) {
                         style={{
                             color: variantColour,
                             textDecoration: 'underline',
-                            textAlign: 'center',
+                            textAlign: 'right',
                             cursor: 'pointer',
                             width: '40%'
                         }}

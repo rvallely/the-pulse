@@ -10,6 +10,7 @@ function PostArticle() {
     const [title, setTitle] = useState('');
     const [topic, setTopic] = useState('');
     const [body, setBody] = useState('');
+    const [error, setError] = useState(undefined);
 
     const navigate = useNavigate();
     const { loggedInUser: { username } } = useContext(UserContext);
@@ -24,6 +25,14 @@ function PostArticle() {
             navigate(`/articles/${postedArticle.id}`, { state: { variantColour: '#0464FF'}});
         }).catch((err) => {
             console.log('ERROR: ', err)
+            if (err.response.data.msg === 'Bad Request: User not in the database.') {
+                setError(
+                <p className="error-color">
+                    Please{' '}
+                    <a href='/' className="error-color">log in</a>
+                    {' '}to post an article.
+                </p>)
+            }
         });
     }
     useEffect(() => {
@@ -40,6 +49,7 @@ function PostArticle() {
                 paddingBottom: '10px',
             }}
             >
+                {error}
                 <form
                     style={{ display: 'grid', maxWidth: '900px', margin: 'auto', textAlign: 'left'}}
                 >
