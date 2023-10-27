@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { postUser } from '../../utils/api';
-import thePulseLogoWhite from '../../assets/the-pulse-logo-white.png';
+import thePulseLogoWhite from '../../assets/icons/the-pulse-logo-white.png';
 import AvatarGrid from './AvatarGrid';
 import { changeModalVisibility } from '../../helpers/changeModalVisibility';
 
@@ -11,19 +11,16 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [avatarIcon, setAvatarIcon] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState(null);
 
    const navigate = useNavigate(); 
 
    const handleSubmit = (e) => {
         e.preventDefault();
         if (password !== confirmPassword) {
-            setError('Passwords must match.')
-            window.location.reload(true);
+            alert('Passwords must match.')
         } 
         else if (username.length > 29) {
-            setError('Username must not exceed 30 characters.')
-            window.location.reload(true);
+            alert('Username must not exceed 30 characters.')
         } 
         else {
             postUser({ email, username, avatarIcon, password}).then(() => {
@@ -31,7 +28,10 @@ const Signup = () => {
                 navigate('/');
             })
             .catch((err) => {
-                setError(err.response.data.msg);
+                if ( err.response.data.msg === 'User already exists, please log in.') {
+                    alert(err.response.data.msg);
+                    navigate('/')
+                }
             });
         }
     }
@@ -53,7 +53,6 @@ const Signup = () => {
                             </div>
                         </div>
                         <h2>Sign up here:</h2>
-                        {error ? <p className='error'>{error}</p>: ''}
                         <form onSubmit={handleSubmit}>
                             <input
                                 type='email'

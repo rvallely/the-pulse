@@ -190,6 +190,7 @@ function Articles() {
                 </div>
             </div>
             :
+            // TODO: 'Be the first one to post an article' button. Takes user to post article.
             <p>
                 No articles posted yet.
             </p>

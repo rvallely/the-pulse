@@ -7,37 +7,39 @@ const newsAPI = axios.create({
 });
 
 export const getSingleUser = async (username, password) => {
-    const response = await newsAPI.post('/users/login', { username, password });
-    return response.data.user;
+    const { data: { user }} = await newsAPI.get(`/users?username=${username}&password=${password}`);
+    return user;
 }
 
 export const postUser = async (user) => {
-    const data = await newsAPI.post('/users', user);
-    return data.data.postedUser;
+    const { data: { user: newUser } } = await newsAPI.post('/users', user);
+    return newUser;
 }
 
 export const getTopics = async () => {
-    const data = await newsAPI.get('/topics');
-    return data.data.topics;
+    const { data: { topics } } = await newsAPI.get('/topics');
+    return topics;
 }
 
 export const getArticles = async (filterAndOrderParams, page) => {
     let path = `/articles?page=${page}`;
+
     Object.entries(filterAndOrderParams).forEach(([key, value]) => {
         if (value) {
             path += `&${key}=${value}`;
         }
     })
-    const data = await newsAPI.get(path);
-    return data.data;
+
+    const { data } = await newsAPI.get(path);
+    return data;
 }
 
 export const patchArticle = async ({ id, body }) => {
-    const data = await newsAPI.patch(`/articles/${id}`, body);
-    return data.data.updatedArticle;
+    const { data: { article } } = await newsAPI.patch(`/articles/${id}`, body);
+    return article;
 }
 
-export const getComments = async ({articleId, filterSortByParams }, page) => {
+export const getComments = async ({ articleId, filterSortByParams }, page) => {
     let path = '';
     if (articleId) {
         path = `/articles/${articleId}/comments?page=${page}`;
@@ -48,22 +50,34 @@ export const getComments = async ({articleId, filterSortByParams }, page) => {
         if (value) {
             path += `&${key}=${value}`;
         }
-    })
-    const data = await newsAPI.get(path);
-    return data.data.comments;
+    });
+    const { data: { comments }} = await newsAPI.get(path);
+    return comments;
 }
 
 export const patchComment = async ({ id, body }) => {
-    const data = await newsAPI.patch(`/comments/${id}`, body);
-    return data.data.updatedComment;
+    const { data: { comment }} = await newsAPI.patch(`/comments/${id}`, body);
+    return comment;
 }
 
 export const postComment = async (articleId, comment) => {
-    const data = await newsAPI.post(`/articles/${articleId}/comments`, comment);
-    return data.data.comment;
+    const { data: { comment: postedComment } } = await newsAPI.post(`/articles/${articleId}/comments`, comment);
+    return postedComment;
 }
 
 export const postArticle = async (article) => {
-    const data = await newsAPI.post('/articles', article);
-    return data.data.postedArticle;
+    const { data: { article: postedArticle} } = await newsAPI.post('/articles', article);
+    return postedArticle;
+}
+
+
+
+
+
+
+
+
+export const deleteArticleContent = async (articleId) => {
+    const data = await newsAPI.patch(`/articles/remove/${articleId}`);
+    return data;
 }

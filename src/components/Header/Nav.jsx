@@ -29,7 +29,7 @@ function Nav({ selectedItem }) {
                     /**
                      * If the user is on a specific article don't show sort icon, as this is irrelevant.
                      */
-                    // TODO: update this conditional so sort by appears on user articles
+                    // TODO: update this conditional so sort by appears on user articles and not on topics
                     window.location.pathname.split('/').length > 2
                     ?
                     <></>

@@ -16,6 +16,7 @@ const Votes = ({ type, articleId, commentId, votes, variantColour }) => {
                 setUserVote(1);
                 if (type === 'article') {
                     patchArticle({ id: articleId, body: { votes: votes + 1 }}).catch((err) => {
+                        alert('Whoops, something went wrong, sorry about that.')
                         // TODO: set error and show
                         console.log('ERROR: ', err)
                         setUserVote(0);
@@ -23,8 +24,9 @@ const Votes = ({ type, articleId, commentId, votes, variantColour }) => {
                 }
                 if (type === 'comment') {
                     patchComment({ id: commentId, body: { votes: votes + 1 }}).catch((err) => {
-                        // TODO: set error and show
+                        alert('Whoops, something went wrong, sorry about that.')
                         console.log('ERROR: ', err)
+                        // TODO: set error and show
                         setUserVote(0);
                     }); 
                 }
@@ -43,7 +45,6 @@ const Votes = ({ type, articleId, commentId, votes, variantColour }) => {
                 height: '46px',
                 width: '70px',
                 display: 'flex',
-                // border: 'solid pink',
                 marginTop: '0',
                 padding: '0px',
                 alignItems: 'center',

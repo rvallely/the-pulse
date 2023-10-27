@@ -6,11 +6,12 @@ function PostComment({ articleId, variantColour, setCommentPosted, setPostCommen
     const [body, setBody] = useState('');
     const { loggedInUser: { username } } = useContext(UserContext);
 
-    const postUserComment = () => {
+    const postUserComment = (e) => {
+        e.preventDefault();
         postComment(articleId, { username, body }).then(() => {
             setCommentPosted(true);
             setPostCommentOpen(false)
-        })
+        });
     }
 
     return (
@@ -18,23 +19,25 @@ function PostComment({ articleId, variantColour, setCommentPosted, setPostCommen
             paddingBottom: '20px',
             paddingTop: '20px',
         }}>
-            <form>
+            <form onSubmit={postUserComment}>
                 <textarea
+                    name='post-comment-body'
+                    required
                     className="post-article-comment-form-element"
                     style={{
                         border: '2px solid #EBEFF4',
                         minHeight: '150px'
                     }}
+                    value={body}
                     onChange={(e) => setBody(e.target.value)}
                 >
                 </textarea>
                 <div style={{ display: 'flex', justifyContent: 'center' }}>
                     <button
-                        type='button'
+                        type='submit'
                         className="action-btn white"
                         // TODO onHover change color to yellow same as other action btns
                         style={{ backgroundColor: variantColour }}
-                        onClick={postUserComment}
                     >
                         <strong>
                             Post

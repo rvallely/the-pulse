@@ -15,7 +15,9 @@ function PostArticle() {
     const navigate = useNavigate();
     const { loggedInUser: { username } } = useContext(UserContext);
 
-    const postUserArticle = () => {
+    const postUserArticle = (e) => {
+        e.preventDefault();
+
         postArticle({
             author: username,
             title,
@@ -52,8 +54,9 @@ function PostArticle() {
                 {error}
                 <form
                     style={{ display: 'grid', maxWidth: '900px', margin: 'auto', textAlign: 'left'}}
+                    onSubmit={postUserArticle}
                 >
-                    <label htmlFor="title"> Title</label>
+                    <label htmlFor="title">Title</label>
                     <input
                         name="title"
                         required
@@ -63,7 +66,7 @@ function PostArticle() {
                         style={{ border: 'none'}}
                     />
                     <br></br>
-                    <label htmlFor="topic"> Topic</label>
+                    <label htmlFor="topic">Topic</label>
                     <select
                         name="topic"
                         required
@@ -87,7 +90,7 @@ function PostArticle() {
                         })}
                     </select>
                     <br></br>
-                    <label htmlFor="body"> Body</label>
+                    <label htmlFor="body">Body</label>
                     <textarea
                         name='body'
                         required
@@ -98,15 +101,13 @@ function PostArticle() {
                             minHeight: '700px'
                         }}
                         onChange={(e) => setBody(e.target.value)}
-                    >
-                        
+                    >  
                     </textarea>
                     <div style={{ display: 'flex', justifyContent: 'center' }}>
                         <button
-                            type='button'
+                            type='submit'
                             className="action-btn primary-bckgrnd white"
                             style={{ marginTop: '10px' }}
-                            onClick={postUserArticle}
                         >
                             <strong>
                                 Post

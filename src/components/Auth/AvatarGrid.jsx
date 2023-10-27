@@ -30,15 +30,18 @@ const avatarIcons = [
 
 function AvatarGrid({ setAvatarIcon }) {
     return ( 
-        <div id="avatar-grid-modal" class="modal">
+        <div
+            id="avatar-grid-modal"
+            className="modal"
+        >
             <div
-            className="modal-content auth-container-shape-color"
-            style={{
-                backgroundColor: '#32323b',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-            }}
+                className="modal-content auth-container-shape-color"
+                style={{
+                    backgroundColor: '#32323b',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                }}
             >
                 <div className="avatar-container">
                 <div className="row">
@@ -47,6 +50,7 @@ function AvatarGrid({ setAvatarIcon }) {
                             <div key={column} className="column">
                                 {avatarIcons.slice(column, column + 4 ).map(([name, png]) => {
                                     return <img
+                                    key={png}
                                     id={png}                                 
                                     alt={name}
                                     src={png}
@@ -67,11 +71,11 @@ function AvatarGrid({ setAvatarIcon }) {
                 </div>
             </div>
             <p
-            className='text-align-centre modal-button'
-            style={{ width: '150px', margin: 'auto' }}
-            onClick={() => changeModalVisibility({
-                modalId: 'avatar-grid-modal',
-            })}
+                className='text-align-centre modal-button'
+                style={{ width: '150px', margin: 'auto' }}
+                onClick={() => changeModalVisibility({
+                    modalId: 'avatar-grid-modal',
+                })}
             >
                 Confirm
             </p>

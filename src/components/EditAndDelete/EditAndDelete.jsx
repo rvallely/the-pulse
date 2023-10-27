@@ -1,7 +1,7 @@
 import editBlack from '../../assets/icons/editBlack.png';
 import deleteBlack from '../../assets/icons/deleteBlack.png';
 
-function EditAndDelete() {
+function EditAndDelete({ article }) {
     return (
         <div >
         <img

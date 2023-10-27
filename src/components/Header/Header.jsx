@@ -1,4 +1,4 @@
-import pulseLogoBlack from '../../assets/the-pulse-logo-black.png'
+import pulseLogoBlack from '../../assets/icons/the-pulse-logo-black.png'
 import { UserContext } from '../../contexts/User';
 import { useContext } from 'react';
 import date from '../../utils/date';

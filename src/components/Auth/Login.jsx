@@ -2,7 +2,7 @@ import { useState, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { UserContext } from '../../contexts/User';
 import { getSingleUser } from '../../utils/api';
-import thePulseLogoWhite from '../../assets/the-pulse-logo-white.png';
+import thePulseLogoWhite from '../../assets/icons/the-pulse-logo-white.png';
 
 function Login () {
     const [username, setUsername] = useState('')
@@ -21,10 +21,9 @@ function Login () {
             navigate('/articles');
         })
         .catch((err) => {
-            if (err.response.data.msg === 'Not Found: user not on database') {
-                setError('User not found. Please try again.');
-            } else if (err.response.data.msg === 'Bad Request: incorrect password.') {
-                setError('Incorrect password. Please try again.');
+            console.log('ERROR: ', err);
+            if (err.response.data.msg) {
+                setError(err.response.data.msg);
             }
             setUsername('');
             setPassword('');

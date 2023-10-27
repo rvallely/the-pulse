@@ -56,7 +56,7 @@ function SingleArticle() {
             console.log('ERROR: ', err)
             setError({ err });
         });
-    }, [articleId, commentPosted, commentsSortBy, commentsOrder, commentPage])
+    }, [articleId, commentPosted, commentsSortBy, commentsOrder, commentPage, comments])
 
     return (
         <div>
@@ -76,7 +76,7 @@ function SingleArticle() {
                         {
                             username === article.author
                             ?
-                            < EditAndDelete />
+                            <EditAndDelete article={article}/>
                             :
                             <p
                                 style={{
