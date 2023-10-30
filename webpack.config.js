@@ -1,7 +1,9 @@
 import Dotenv from 'dotenv-webpack';
 
-export const plugins = [
-    new Dotenv({
-        systemvars: true
-    })
+const plugins = [
+  new Dotenv({
+    systemvars: true,
+  }),
 ];
+
+export default plugins;

@@ -1,3 +1,5 @@
-export const {
-    REACT_APP_ENV,
+const {
+  REACT_APP_ENV,
 } = process.env;
+
+export default REACT_APP_ENV;
