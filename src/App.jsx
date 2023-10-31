@@ -9,8 +9,10 @@ import Signup from './components/Auth/Signup';
 import Topics from './components/Topics/Topics';
 import SingleArticle from './components/Articles/SingleArticle';
 import User from './components/User/UserArea/UserArea';
-import PostArticle from './components/User/UserArea/PostArticle';
+import PostPatchArticle from './components/User/UserArea/PostPatchArticle';
 import UserComments from './components/Comments/UserComments';
+import PatchComment from './components/User/UserArea/PatchComment';
+import DeleteArticleOrComment from './components/User/UserArea/DeleteArticleOrComment';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -41,8 +43,11 @@ function App() {
           <Route path="/topics" element={<Topics />} />
           <Route path="/articles/:articleId" element={<SingleArticle />} />
           <Route path="/user" element={<User />} />
-          <Route path="/user/post-article" element={<PostArticle />} />
+          <Route path="/user/post-article" element={<PostPatchArticle />} />
           <Route path="/user/comments" element={<UserComments />} />
+          <Route path="/user/edit-article" element={<PostPatchArticle />} />
+          <Route path="/user/edit-comment" element={<PatchComment />} />
+          <Route path="/user/delete-comment" element={<DeleteArticleOrComment />} />
           {/*
           <Route path='*' element={<Redirect />}></Route> */}
         </Routes>

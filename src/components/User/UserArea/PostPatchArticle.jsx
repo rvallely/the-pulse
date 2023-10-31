@@ -1,16 +1,18 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { getTopics, postArticle } from '../../../utils/api';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { getTopics, patchArticle, postArticle } from '../../../utils/api';
 import Nav from '../../Header/Nav';
 import Header from '../../Header/Header';
 import { UserContext } from '../../../contexts/User';
 
-function PostArticle() {
+function PostPatchArticle() {
+  const location = useLocation();
+
   const [topics, setTopics] = useState([]);
-  const [title, setTitle] = useState('');
-  const [topic, setTopic] = useState('');
-  const [body, setBody] = useState('');
+  const [title, setTitle] = useState(location.pathname === '/user/post-article' ? '' : location.state.subject.title);
+  const [topic, setTopic] = useState(location.pathname === '/user/post-article' ? '' : location.state.subject.topic);
+  const [body, setBody] = useState(location.pathname === '/user/post-article' ? '' : location.state.subject.body);
   const [error, setError] = useState(undefined);
 
   const navigate = useNavigate();
@@ -41,6 +43,30 @@ function PostArticle() {
       }
     });
   };
+
+  const patchUserArticle = (e) => {
+    e.preventDefault();
+
+    patchArticle({
+      id: location.state.subject.id,
+      body: {
+        title,
+        topic,
+        body,
+      },
+    }).then((patchedArticle) => {
+      navigate(`/articles/${patchedArticle.id}`, { state: { variantColour: '#0464FF' } });
+    }).catch((err) => {
+      console.log('ERROR: ', err);
+      if (err.response.data.msg === 'Bad Request: id or update values invalid.') {
+        setError(
+          <p className="error-color">
+            Whoops, something went wrong! Please try again.
+          </p>,
+        );
+      }
+    });
+  };
   useEffect(() => {
     getTopics().then((topicsFromAPI) => {
       setTopics(topicsFromAPI);
@@ -60,7 +86,7 @@ function PostArticle() {
           style={{
             display: 'grid', maxWidth: '900px', margin: 'auto', textAlign: 'left',
           }}
-          onSubmit={postUserArticle}
+          onSubmit={location.pathname === '/user/post-article' ? postUserArticle : patchUserArticle}
         >
           <label htmlFor="title">Title</label>
           <input
@@ -116,7 +142,7 @@ function PostArticle() {
               style={{ marginTop: '10px' }}
             >
               <strong>
-                Post
+                {location.pathname === '/user/post-article' ? 'Post' : 'Update'}
               </strong>
             </button>
           </div>
@@ -126,4 +152,4 @@ function PostArticle() {
   );
 }
 
-export default PostArticle;
+export default PostPatchArticle;
