@@ -60,7 +60,7 @@ function Signup() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="auth-form-input"
+                className="auth-form-input auth-form-input-background"
               />
 
               <input
@@ -69,13 +69,13 @@ function Signup() {
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="auth-form-input"
+                className="auth-form-input auth-form-input-background"
               />
               <div className="inline-container">
                 <div className="one-of-two-inline-element">
                   <button
                     type="button"
-                    className="modal-button auth-form-input"
+                    className="modal-button auth-form-input auth-form-input-background"
                     onClick={() => changeModalVisibility({
                       modalId: 'avatar-grid-modal',
                     })}
@@ -107,7 +107,7 @@ function Signup() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="auth-form-input"
+                className="auth-form-input auth-form-input-background"
               />
 
               <input
@@ -116,7 +116,7 @@ function Signup() {
                 required
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-                className="auth-form-input"
+                className="auth-form-input auth-form-input-background"
               />
 
               <button

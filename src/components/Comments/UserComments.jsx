@@ -9,6 +9,7 @@ import Nav from '../Header/Nav';
 function UserComments() {
   const [page] = useState(0);
   const [comments, setComments] = useState(undefined);
+  const [commentDeleted, setCommentDeleted] = useState(false);
 
   const [searchParams] = useSearchParams();
   const author = searchParams.get('author');
@@ -28,12 +29,13 @@ function UserComments() {
       page,
     )
       .then((response) => {
+        setCommentDeleted(false);
         setComments(response);
       })
       .catch((err) => {
         console.log('ERROR: ', err);
       });
-  }, [page, order, sortBy, author]);
+  }, [page, order, sortBy, author, commentDeleted]);
 
   if (!comments) {
     return <p>loading...</p>;
@@ -57,13 +59,14 @@ function UserComments() {
           <h2>Your comments</h2>
           <SortIcon type="comments" variantColour="#0464FF" />
         </div>
-        {comments.comments.map((comment) => (
+        {comments && comments.comments.map((comment) => (
           <SingleComment
             key={comment.id}
             comment={comment}
             variantColour="#0464FF"
             lastComment={comments.lastPage}
             userComment
+            setCommentDeleted={setCommentDeleted}
           />
         ))}
       </div>

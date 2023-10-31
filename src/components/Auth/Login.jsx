@@ -62,7 +62,7 @@ function Login() {
                 required
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
-                className="auth-form-input"
+                className="auth-form-input auth-form-input-background"
               />
               <input
                 type="password"
@@ -70,7 +70,7 @@ function Login() {
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="auth-form-input"
+                className="auth-form-input auth-form-input-background"
               />
               <button
                 type="submit"

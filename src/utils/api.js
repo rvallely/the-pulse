@@ -70,7 +70,12 @@ export const postArticle = async (article) => {
   return postedArticle;
 };
 
-export const deleteArticleContent = async (articleId) => {
-  const data = await newsAPI.patch(`/articles/remove/${articleId}`);
+export const deleteArticleAndAssociatedComments = async (id) => {
+  const data = await newsAPI.delete(`/articles/delete/${id}`);
   return data;
+};
+
+export const deleteComments = async (id) => {
+  const data = await newsAPI.delete(`/comments/${id}`);
+  return data.data;
 };

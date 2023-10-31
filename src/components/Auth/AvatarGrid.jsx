@@ -89,7 +89,7 @@ function AvatarGrid({ setAvatarIcon }) {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button
             type="button"
-            className="modal-button auth-form-input"
+            className="modal-button auth-form-input auth-form-input-background"
             style={{
               position: 'relative',
               width: '150px',

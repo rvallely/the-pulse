@@ -8,7 +8,7 @@ import EditAndDelete from '../EditAndDelete/EditAndDelete';
 import colors from '../../utils/variantColours';
 
 function SingleComment({
-  comment, variantColour, lastComment, userComment,
+  comment, variantColour, lastComment, userComment, setCommentDeleted,
 }) {
   const [articleTitle, setArticleTitle] = useState('');
 
@@ -75,7 +75,7 @@ function SingleComment({
         // eslint-disable-next-line consistent-return
         (() => {
           if (userComment) {
-            return <EditAndDelete type="comment" subject={comment} />;
+            return <EditAndDelete type="comment" subject={comment} setCommentDeleted={setCommentDeleted} />;
           }
         })()
       }
@@ -98,4 +98,9 @@ SingleComment.propTypes = {
   variantColour: PropTypes.oneOf(colors).isRequired,
   lastComment: PropTypes.bool.isRequired,
   userComment: PropTypes.bool.isRequired,
+  setCommentDeleted: PropTypes.func,
+};
+
+SingleComment.defaultProps = {
+  setCommentDeleted: undefined,
 };

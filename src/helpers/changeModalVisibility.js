@@ -1,9 +1,8 @@
 function changeModalVisibility({ modalId, triggeringElementId }) {
   const modal = document.getElementById(modalId);
-
   /**
     * comments-container begins open
-    * sort-by and avatar-grid modals begin closed
+    * sort-by, avatar-grid modals and delete-content begin closed
     */
   if (
     (modalId === 'comments-container' && modal.style.display === '')
@@ -11,7 +10,7 @@ function changeModalVisibility({ modalId, triggeringElementId }) {
   ) {
     modal.style.setProperty('display', 'none');
   } else if (
-    ((modalId.includes('sort-by') || modalId.includes('avatar-grid')) && modal.style.display === '')
+    ((modalId.includes('sort-by') || modalId.includes('avatar-grid') || modalId.includes('delete-content')) && modal.style.display === '')
         || modal.style.display === 'none'
   ) {
     /**
