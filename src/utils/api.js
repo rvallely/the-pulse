@@ -2,7 +2,7 @@ import axios from 'axios';
 import REACT_APP_ENV from '../env';
 
 const newsAPI = axios.create({
-  baseURL: REACT_APP_ENV === 'dev' ? 'http://localhost:9090/api' : 'https://rosie-nc-news-app.herokuapp.com/api',
+  baseURL: REACT_APP_ENV === 'dev' ? 'http://localhost:9090/api' : process.ENV.API,
   headers: { 'Access-Control-Allow-Origin': '*' },
 });
 
