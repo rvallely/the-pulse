@@ -12,9 +12,9 @@ The deployed app: https://nc-news-rvallely.netlify.app/
 
 ## Backend
 
-The backend repo for this application: https://github.com/rvallely/ncNewsApp .  TODO
+The backend repo for this application: https://github.com/rvallely/ncNewsApp .
   
-The hosted API of this back-end project: https://rosie-nc-news-app.herokuapp.com/api. TODO
+The hosted API of this back-end project: https://the-pulse-dbf9.onrender.com/api .
 
 Using the endpoints and the 'queries' and 'params' listed for each endpoint on the hosted API, you can change the URL and access data in the database.
 
@@ -47,20 +47,20 @@ As a user I should be able to:
 . date created  
 . comment count  
 . votes
-8. delete my own comments TODO
+8. delete my own comments
 9. see an appropriate error if I go to a non existent path or a path for a non existent article or topic TODO
 10. not be able to post a comment if I haven't filled in all of the form boxes
 11. be able to use the site on my mobile or laptop without sacrificing functionality
 12. vote on a comment and immediately see the change
 13. view a list of all articles written by any specific user
 14. post a new article to an existing topic
-15. delete my own articles TODO
+15. delete my own articles
 16. sort comments by most recent and most votes
 16. login with a correct username and password
 17. only be able to vote once per page load on any vote button
 18. sign up as a new user
-19. update the body of my own articles TODO
-20. update the body of my own comments TODO
+19. update the body of my own articles
+20. update the body of my own comments
 
 ## What I Learned
 
