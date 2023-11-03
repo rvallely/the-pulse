@@ -48,7 +48,7 @@ function App() {
           <Route path="/user/edit-article" element={<PostPatchArticle />} />
           <Route path="/user/edit-comment" element={<PatchComment />} />
           <Route path="/user/delete-comment" element={<DeleteArticleOrComment />} />
-          <Route path='*' element={<Redirect />}></Route>
+          <Route path="*" element={<Redirect />} />
         </Routes>
       </UserContext.Provider>
 
