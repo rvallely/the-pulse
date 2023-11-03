@@ -1,5 +1,6 @@
 import { createContext } from 'react';
 import loggedOutUserIcon from '../assets/avatar_icons/logged_out_user.png';
+
 export const defaultUserContext = {
   username: 'Log in',
   avatarIcon: loggedOutUserIcon,
