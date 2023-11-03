@@ -1,9 +1,8 @@
 import { createContext } from 'react';
-
+import loggedOutUserIcon from '../assets/avatar_icons/logged_out_user.png';
 export const defaultUserContext = {
   username: 'Log in',
-  avatarIcon:
-    'https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png',
+  avatarIcon: loggedOutUserIcon,
 };
 
 // TODO: make logged in stack and non logged in stack so not as many conditionals.
