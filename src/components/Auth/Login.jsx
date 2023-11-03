@@ -40,7 +40,7 @@ function Login() {
     <div className="mischka-bckgrnd page fixed">
       <div className="centre-align-x-y-container">
         <div className="auth-container auth-container-shape-color">
-          <div style={{ margin: '7.72%', maxHeight: '98%' }}>
+          <div style={{ margin: '7.72%', height: '90%', maxHeight: '90%' }}>
             <div className="inline-container">
               <div className="one-of-two-inline-element">
                 <div>
@@ -80,10 +80,13 @@ function Login() {
                 Log in
               </button>
             </form>
-            <h2>or</h2>
-            <Link className="inherit-color" to="/articles">
-              <h2>Continue as a guest</h2>
-            </Link>
+            <h2>
+              or
+              {' '}
+              <Link className="inherit-color" to="/articles">
+                Continue as a guest
+              </Link>
+            </h2>
           </div>
         </div>
       </div>
