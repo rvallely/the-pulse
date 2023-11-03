@@ -20,7 +20,7 @@ function Login() {
 
       const loggedInUser = {
         username: user.username,
-        avatarUrl: user.avatar_url,
+        avatarIcon: user.avatar_url,
         email: user.email,
       };
 

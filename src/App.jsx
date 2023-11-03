@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { UserContext } from './contexts/User';
 import Articles from './components/Articles/Articles';
 import Login from './components/Auth/Login';
-// import Redirect from './components/General/Redirect';
+import Redirect from './components/Redirect';
 import Signup from './components/Auth/Signup';
 import Topics from './components/Topics/Topics';
 import SingleArticle from './components/Articles/SingleArticle';
@@ -13,12 +13,12 @@ import PostPatchArticle from './components/User/UserArea/PostPatchArticle';
 import UserComments from './components/Comments/UserComments';
 import PatchComment from './components/User/UserArea/PatchComment';
 import DeleteArticleOrComment from './components/User/UserArea/DeleteArticleOrComment';
+import loggedOutUserIcon from './assets/avatar_icons/logged_out_user.png';
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
     username: 'Log in',
-    avatarUrl:
-        'https://www.seekpng.com/png/detail/966-9665493_my-profile-icon-blank-profile-image-circle.png',
+    avatarIcon: loggedOutUserIcon,
   });
 
   const loggedInUserLocalStorage = localStorage.getItem('loggedInUser');
@@ -48,8 +48,7 @@ function App() {
           <Route path="/user/edit-article" element={<PostPatchArticle />} />
           <Route path="/user/edit-comment" element={<PatchComment />} />
           <Route path="/user/delete-comment" element={<DeleteArticleOrComment />} />
-          {/*
-          <Route path='*' element={<Redirect />}></Route> */}
+          <Route path='*' element={<Redirect />}></Route>
         </Routes>
       </UserContext.Provider>
 
