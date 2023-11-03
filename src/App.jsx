@@ -23,7 +23,7 @@ function App() {
 
   const loggedInUserLocalStorage = localStorage.getItem('loggedInUser');
   useEffect(() => {
-    if (loggedInUserLocalStorage !== 'undefined') {
+    if (loggedInUserLocalStorage) {
       setLoggedInUser(JSON.parse(loggedInUserLocalStorage));
     }
   }, [loggedInUserLocalStorage]);

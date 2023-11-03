@@ -82,12 +82,12 @@ function UserArea() {
           tabIndex={0}
           className="grid-item topic-user-area-grid-item user-area-grid-item4"
           onClick={() => {
-            localStorage.removeItem('loggedInUser');
+            localStorage.clear();
             setLoggedInUser(defaultUserContext);
             navigate('/');
           }}
           onKeyDown={() => {
-            localStorage.removeItem('loggedInUser');
+            localStorage.clear();
             setLoggedInUser(defaultUserContext);
             navigate('/');
           }}
