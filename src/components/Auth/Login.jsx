@@ -40,7 +40,7 @@ function Login() {
     <div className="mischka-bckgrnd page fixed">
       <div className="centre-align-x-y-container">
         <div className="auth-container auth-container-shape-color">
-          <div style={{ margin: '7.72%', height: '90%', maxHeight: '90%' }}>
+          <div style={{ margin: '7.72%', maxHeight: '90%' }}>
             <div className="inline-container">
               <div className="one-of-two-inline-element">
                 <div>
